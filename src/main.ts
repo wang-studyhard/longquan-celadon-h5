@@ -1,10 +1,9 @@
 import "./styles.css";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Menu, Play, X, createIcons } from "lucide";
 import content from "./content/site.json";
 
-gsap.registerPlugin(ScrollTrigger);
+let ScrollTrigger: typeof import("gsap/ScrollTrigger").ScrollTrigger;
 
 type ResultItem = (typeof content.results)[number] & {
   title?: string;
@@ -32,24 +31,60 @@ const categoryMeta = {
   oralHistory: { title: "口述史", action: "进入口述史", className: "is-oral" },
 } as const;
 
-renderHistory();
-renderRouteStops();
-renderResults();
-renderMeta();
-renderSources();
-initializeIcons();
-initializeRouteMap();
-initializeFieldworkGallery();
-initializeCreativeGallery();
-initializeResultCarousels();
-initializeHeader();
-initializeHistoryNavigation();
-initializeOfflineState();
-initializeScrollRestoration();
-initializeHistoryIllustrations();
-initializeGlazeTransition();
 const entersAfterHero = ["#history", "#longquan", "#results", "#creative", "#about"].includes(location.hash);
-initializeMotion(entersAfterHero);
+if (entersAfterHero) setDirectHeroState();
+requestAnimationFrame(() => void initializeApp());
+
+async function initializeApp(): Promise<void> {
+  ({ ScrollTrigger } = await import("gsap/ScrollTrigger"));
+  await nextFrame();
+  gsap.registerPlugin(ScrollTrigger);
+  renderHistory();
+  renderRouteStops();
+  renderResults();
+  await nextFrame();
+  renderMeta();
+  renderSources();
+  initializeIcons();
+  initializeRouteMap();
+  initializeFieldworkGallery();
+  initializeCreativeGallery();
+  initializeResultCarousels();
+  initializeHeader();
+  initializeHistoryNavigation();
+  initializeOfflineState();
+  initializeScrollRestoration();
+  await nextFrame();
+  initializeHistoryIllustrations();
+  initializeGlazeTransition();
+  initializeMotion(entersAfterHero);
+  if (entersAfterHero) {
+    setDirectHeroState();
+    requestAnimationFrame(() => {
+      document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      ScrollTrigger.update();
+    });
+  }
+}
+
+function nextFrame(): Promise<void> {
+  return new Promise((resolve) => requestAnimationFrame(() => resolve()));
+}
+
+function setDirectHeroState(): void {
+  const world = document.querySelector<HTMLElement>("[data-celadon-world]")!;
+  const artwork = document.querySelector<HTMLElement>("[data-celadon-artwork]")!;
+  const shards = gsap.utils.toArray<SVGGElement>(".celadon-shard");
+  gsap.set(world, { "--backdrop-opacity": 0.42 });
+  gsap.set([artwork.querySelector(".vessel-art"), artwork.querySelector(".celadon-artwork__outline"), artwork.querySelector(".celadon-artwork__ground")], { autoAlpha: 0 });
+  gsap.set(shards, {
+    autoAlpha: 0.36,
+    x: (_, shard) => Number((shard as SVGGElement).dataset.shardX) * window.innerWidth,
+    y: (_, shard) => Number((shard as SVGGElement).dataset.shardY) * window.innerHeight,
+    rotation: (_, shard) => Number((shard as SVGGElement).dataset.shardRotation),
+    scale: (_, shard) => Number((shard as SVGGElement).dataset.shardScale),
+  });
+}
 
 function initializeMotion(entersAfterHero: boolean): void {
   const heroProgress = document.querySelector<HTMLElement>(".hero-progress span")!;
@@ -118,28 +153,58 @@ function initializeMotion(entersAfterHero: boolean): void {
   const historyMotion = { progress: 0 };
   const axisViewHeight = historyAxis.viewBox.baseVal.height;
   const axisCenterX = historyAxis.viewBox.baseVal.width / 2;
+  let historyHeight = 1;
+  let scrollDistance = 0;
+  let travelerCenter = 0;
+  let axisScale = 1;
+  let axisSamples: Array<{ length: number; x: number; y: number }> = [];
+
+  const measureHistoryMotion = () => {
+    historyHeight = historyScroll.offsetHeight;
+    scrollDistance = Math.max(0, historyHeight - window.innerHeight);
+    travelerCenter = window.innerHeight * 0.42 + traveler.offsetHeight / 2;
+    axisScale = historyAxis.getBoundingClientRect().width / 240;
+    if (axisSamples.length) return;
+    const sampleCount = 96;
+    axisSamples = Array.from({ length: sampleCount + 1 }, (_, index) => {
+      const length = (axisLength * index) / sampleCount;
+      const point = axisProgress.getPointAtLength(length);
+      return { length, x: point.x, y: point.y };
+    });
+  };
+
   const pointAtAxisY = (targetY: number) => {
     let low = 0;
-    let high = axisLength;
-    for (let iteration = 0; iteration < 14; iteration += 1) {
-      const middle = (low + high) / 2;
-      if (axisProgress.getPointAtLength(middle).y < targetY) low = middle;
+    let high = axisSamples.length - 1;
+    while (low < high) {
+      const middle = Math.floor((low + high) / 2);
+      if (axisSamples[middle].y < targetY) low = middle + 1;
       else high = middle;
     }
-    const length = (low + high) / 2;
-    return { length, point: axisProgress.getPointAtLength(length) };
+    const upper = axisSamples[low];
+    const lowerIndex = Math.max(0, low - 1);
+    const lower = axisSamples[lowerIndex];
+    const span = Math.max(0.001, upper.y - lower.y);
+    const ratio = gsap.utils.clamp(0, 1, (targetY - lower.y) / span);
+    const sampleLength = axisLength / (axisSamples.length - 1);
+    const tangentRatio = Math.min(1, 14 / sampleLength);
+    const lowerNext = axisSamples[Math.min(axisSamples.length - 1, lowerIndex + 1)];
+    const upperNext = axisSamples[Math.min(axisSamples.length - 1, low + 1)];
+    const lowerTangentX = gsap.utils.interpolate(lower.x, lowerNext.x, tangentRatio);
+    const upperTangentX = gsap.utils.interpolate(upper.x, upperNext.x, tangentRatio);
+    return {
+      length: gsap.utils.interpolate(lower.length, upper.length, ratio),
+      x: gsap.utils.interpolate(lower.x, upper.x, ratio),
+      tangentX: gsap.utils.interpolate(lowerTangentX, upperTangentX, ratio),
+    };
   };
+
   const updateHistoryMotion = () => {
     const progress = historyMotion.progress;
-    const historyHeight = historyScroll.offsetHeight;
-    const scrollDistance = Math.max(0, historyHeight - window.innerHeight);
-    const travelerCenter = window.innerHeight * 0.42 + traveler.offsetHeight / 2;
     const targetY = gsap.utils.clamp(0, axisViewHeight, ((progress * scrollDistance + travelerCenter) / historyHeight) * axisViewHeight);
-    const { length: traveledLength, point } = pointAtAxisY(targetY);
-    const nextPoint = axisProgress.getPointAtLength(Math.min(axisLength, traveledLength + 14));
-    const axisScale = historyAxis.getBoundingClientRect().width / 240;
-    const x = (point.x - axisCenterX) * axisScale;
-    const rotation = gsap.utils.clamp(-5, 5, (nextPoint.x - point.x) * axisScale * 0.55);
+    const { length: traveledLength, x: axisX, tangentX } = pointAtAxisY(targetY);
+    const x = (axisX - axisCenterX) * axisScale;
+    const rotation = gsap.utils.clamp(-5, 5, (tangentX - axisX) * axisScale * 0.55);
     const axisVisibility = Math.min(gsap.utils.clamp(0, 1, progress / 0.055), gsap.utils.clamp(0, 1, (1 - progress) / 0.07));
     const vesselVisibility = Math.min(gsap.utils.clamp(0, 1, progress / 0.025), gsap.utils.clamp(0, 1, (1 - progress) / 0.04));
     gsap.set(axisProgress, { strokeDashoffset: axisLength - traveledLength });
@@ -151,8 +216,8 @@ function initializeMotion(entersAfterHero: boolean): void {
       rotationY: Math.sin(progress * Math.PI * 6) * 9,
       rotationZ: rotation,
     });
-    traveler.dataset.historyProgress = progress.toFixed(3);
   };
+  measureHistoryMotion();
   gsap.to(historyMotion, {
     progress: 1,
     ease: "none",
@@ -164,17 +229,16 @@ function initializeMotion(entersAfterHero: boolean): void {
       end: "bottom bottom",
       scrub: 0.42,
       invalidateOnRefresh: true,
+      onRefresh: measureHistoryMotion,
     },
   });
   updateHistoryMotion();
 
   document.querySelectorAll<HTMLElement>(".history-chapter").forEach((chapter, index) => {
     const opening = chapter.querySelector<HTMLElement>(".history-opening")!;
-    const heading = opening.querySelector<HTMLElement>("h3")!;
     const detail = chapter.querySelector<HTMLElement>(".history-detail")!;
     const plate = chapter.querySelector<HTMLElement>(".history-plate")!;
     const scene = chapter.querySelector<HTMLElement>(".history-scene")!;
-    const headingPressure = textPressure(heading, 20);
     const direction = index % 2 === 0 ? 1 : -1;
 
     gsap.timeline({
@@ -200,13 +264,7 @@ function initializeMotion(entersAfterHero: boolean): void {
         { autoAlpha: 0, scale: 0.92 },
         { autoAlpha: 0.96, scale: 1, ease: "none" },
         0.55,
-      )
-      .fromTo(heading,
-        { fontVariationSettings: headingPressure.rest },
-        { fontVariationSettings: headingPressure.pressed, duration: 0.28, ease: "none" },
-        0.3,
-      )
-      .to(heading, { fontVariationSettings: headingPressure.rest, duration: 0.2, ease: "none" }, 0.78);
+      );
 
     gsap.timeline({
       scrollTrigger: {
@@ -218,12 +276,12 @@ function initializeMotion(entersAfterHero: boolean): void {
       defaults: { ease: "none" },
     })
       .fromTo(scene,
-        { autoAlpha: 0.04, y: 8, scale: 0.985, filter: "blur(3px)" },
-        { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.24 },
+        { autoAlpha: 0.04, y: 8, scale: 0.985 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.24 },
         0,
       )
       .to(scene,
-        { autoAlpha: 0.04, y: -8, scale: 0.985, filter: "blur(3px)", duration: 0.22 },
+        { autoAlpha: 0.04, y: -8, scale: 0.985, duration: 0.22 },
         0.78,
       );
 
@@ -295,12 +353,9 @@ function initializeChapterPortals(): void {
     const copyShell = portal.querySelector<HTMLElement>(".chapter-portal__copy-shell")!;
     const copy = portal.querySelector<HTMLElement>(".chapter-portal__copy")!;
     const title = portal.querySelector<HTMLElement>(".chapter-portal__title")!;
-    const heading = title.querySelector<HTMLElement>("h2")!;
     const summary = portal.querySelector<HTMLElement>(".chapter-portal__summary")!;
     const veil = portal.querySelector<HTMLElement>(".chapter-portal__veil")!;
     const artNote = portal.querySelector<HTMLElement>(".chapter-portal__art-note")!;
-    const headingPressure = textPressure(heading, 22);
-    const summaryPressure = textPressure(summary, 28);
     const variant = portal.dataset.portalVariant as keyof typeof portalInsets;
 
     const startClip = () => {
@@ -348,23 +403,16 @@ function initializeChapterPortals(): void {
         0,
       )
       .fromTo(title,
-        { autoAlpha: 0.24, filter: "blur(6px)" },
-        { autoAlpha: 1, filter: "blur(0px)", duration: 0.42, ease: "none" },
+        { autoAlpha: 0.24 },
+        { autoAlpha: 1, duration: 0.42, ease: "none" },
         0,
       )
       .fromTo(veil, { opacity: 0.38 }, { opacity: 0.58, duration: 0.7, ease: "none" }, 0)
       .fromTo(summary,
-        { autoAlpha: 0, y: 22, fontVariationSettings: summaryPressure.rest },
-        { autoAlpha: 1, y: 0, fontVariationSettings: summaryPressure.pressed, duration: 0.2, ease: "none" },
+        { autoAlpha: 0, y: 22 },
+        { autoAlpha: 1, y: 0, duration: 0.2, ease: "none" },
         0.42,
       )
-      .fromTo(heading,
-        { fontVariationSettings: headingPressure.rest },
-        { fontVariationSettings: headingPressure.pressed, duration: 0.28, ease: "none" },
-        0.2,
-      )
-      .to(heading, { fontVariationSettings: headingPressure.rest, duration: 0.16, ease: "none" }, 0.8)
-      .to(summary, { fontVariationSettings: summaryPressure.rest, duration: 0.14, ease: "none" }, 0.79)
       .fromTo(artNote,
         { autoAlpha: 0, y: 8 },
         { autoAlpha: 1, y: 0, duration: 0.12, ease: "none" },
@@ -377,7 +425,6 @@ function initializeChapterPortals(): void {
 function initializeTextMotion(): void {
   const heroTitle = document.querySelector<HTMLElement>(".hero h1")!;
   const heroCopy = gsap.utils.toArray<HTMLElement>(".hero-identity, .hero-en, .hero-subtitle, .next-chapter");
-  const heroPressure = textPressure(heroTitle, 22);
   const heroExit = {
     trigger: "#form",
     start: "top top",
@@ -387,20 +434,14 @@ function initializeTextMotion(): void {
   };
 
   gsap.timeline({ scrollTrigger: heroExit })
-    .fromTo(heroTitle,
-      { fontVariationSettings: heroPressure.rest },
-      { fontVariationSettings: heroPressure.pressed, duration: 0.22, ease: "none" },
-    )
     .to(heroTitle, {
       autoAlpha: 0,
       y: -30,
       scale: 0.985,
-      filter: "blur(8px)",
-      fontVariationSettings: heroPressure.rest,
       duration: 0.78,
       ease: "none",
       overwrite: "auto",
-    });
+    }, 0.22);
   gsap.to(heroCopy, {
     autoAlpha: 0,
     y: -14,
@@ -420,7 +461,6 @@ function initializeTextMotion(): void {
   ].join(", "));
 
   bodyCopy.forEach((copy) => {
-    const pressure = textPressure(copy, 28);
     gsap.timeline({
       scrollTrigger: {
         trigger: copy,
@@ -430,30 +470,12 @@ function initializeTextMotion(): void {
       },
     })
       .fromTo(copy,
-        { autoAlpha: 0, y: 16, fontVariationSettings: pressure.rest },
+        { autoAlpha: 0, y: 16 },
         { autoAlpha: 1, y: 0, duration: 0.3, ease: "none" },
       )
-      .to(copy, { autoAlpha: 1, fontVariationSettings: pressure.pressed, duration: 0.2, ease: "none" })
-      .to(copy, { autoAlpha: 1, duration: 0.26, ease: "none" })
-      .to(copy, { autoAlpha: 0, y: -10, fontVariationSettings: pressure.rest, duration: 0.24, ease: "none" });
+      .to(copy, { autoAlpha: 1, duration: 0.46, ease: "none" })
+      .to(copy, { autoAlpha: 0, y: -10, duration: 0.24, ease: "none" });
   });
-
-  gsap.utils.toArray<HTMLElement>(".category-heading h3, .source-list h3").forEach((heading) => {
-    const pressure = textPressure(heading, 20);
-    gsap.timeline({
-      scrollTrigger: { trigger: heading, start: "top 84%", end: "bottom 24%", scrub: 0.38 },
-    })
-      .fromTo(heading,
-        { fontVariationSettings: pressure.rest },
-        { fontVariationSettings: pressure.pressed, duration: 0.45, ease: "none" },
-      )
-      .to(heading, { fontVariationSettings: pressure.rest, duration: 0.55, ease: "none" });
-  });
-}
-
-function textPressure(element: HTMLElement, increase: number): { rest: string; pressed: string } {
-  const weight = Number.parseFloat(getComputedStyle(element).fontWeight);
-  return { rest: `"wght" ${weight}`, pressed: `"wght" ${weight + increase}` };
 }
 
 function activateHistory(index: number): void {
@@ -507,8 +529,8 @@ function renderHistory(): void {
           <div class="history-scene" data-history-scene="${node.id}" aria-hidden="true">
             <div class="history-scene-fallback">${historySceneFallback(node.id)}</div>
             <div class="history-scene-artwork">
-              <img class="history-scene-illustration" data-history-illustration src="${node.visualImage}" alt="" loading="lazy" decoding="async">
-              <img class="history-scene-motion" src="${node.visualImage}" alt="" loading="lazy" decoding="async">
+              <img class="history-scene-illustration" data-history-illustration src="${node.visualImage}" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+              <img class="history-scene-motion" src="${node.visualImage}" width="1254" height="1254" alt="" loading="lazy" decoding="async">
             </div>
           </div>
           <figcaption>${node.visualCaption}</figcaption>
@@ -728,8 +750,6 @@ function initializeResultCarousels(): void {
         const behind = Math.max(0, distance);
         const shown = distance > -1.02 && distance <= visible + 0.45;
         const opacity = !shown ? 0 : distance < 0 ? Math.max(0, 1 + distance) : 1;
-        const blur = Math.min(1.4, (behind / Math.max(visible, 1)) * 1.4);
-        const brightness = Math.max(0.76, 1 - behind * 0.065);
         const tint = card.querySelector<HTMLElement>(".result-depth-tint");
 
         gsap.set(card, {
@@ -737,7 +757,6 @@ function initializeResultCarousels(): void {
           z: -depth * behind,
           rotationY: tilt * Math.min(behind, 1),
           autoAlpha: opacity,
-          filter: `brightness(${brightness}) blur(${blur}px)`,
           zIndex: Math.round(100 - distance * 10),
           pointerEvents: shown && opacity > 0.06 ? "auto" : "none",
         });
@@ -748,7 +767,7 @@ function initializeResultCarousels(): void {
     const measure = () => {
       stage.style.height = `${Math.max(...cards.map((card) => card.offsetHeight))}px`;
       layout(position);
-      ScrollTrigger.refresh();
+      refreshScrollMeasurements();
     };
 
     const updateState = () => {
@@ -770,7 +789,7 @@ function initializeResultCarousels(): void {
       updateState();
       tween?.kill();
       const proxy = { value: position };
-      cards.forEach((card) => { card.style.willChange = "transform, opacity, filter"; });
+      cards.forEach((card) => { card.style.willChange = "transform, opacity"; });
       tween = gsap.to(proxy, {
         value: active,
         duration: animate && !reducedMotion ? 0.52 : 0,
@@ -918,14 +937,14 @@ function initializeCreativeGallery(): void {
       visual.classList.toggle("is-active", selected);
       visual.setAttribute("aria-hidden", String(!selected));
       if (!selected) {
-        gsap.set(visual, { autoAlpha: 0, scale: 0.985, filter: "blur(1px)" });
+        gsap.set(visual, { autoAlpha: 0, scale: 0.985 });
       } else if (changed && animate && !reducedMotion) {
         gsap.fromTo(visual,
-          { autoAlpha: 0.35, scale: 0.982, filter: "blur(3px)" },
-          { autoAlpha: 1, scale: 1, filter: "blur(0px)", duration: 0.42, ease: "power3.out", overwrite: "auto" },
+          { autoAlpha: 0.35, scale: 0.982 },
+          { autoAlpha: 1, scale: 1, duration: 0.42, ease: "power3.out", overwrite: "auto" },
         );
       } else {
-        gsap.set(visual, { autoAlpha: 1, scale: 1, filter: "blur(0px)" });
+        gsap.set(visual, { autoAlpha: 1, scale: 1 });
       }
     });
 
@@ -1032,7 +1051,6 @@ function initializeCreativeGallery(): void {
   dialog.addEventListener("close", () => expand.focus());
 
   setActive(0, false);
-  Promise.allSettled(visuals.map((visual) => visual.decode())).then(refreshScrollMeasurements);
 }
 
 function renderMeta(): void {
@@ -1224,7 +1242,6 @@ function initializeHistoryIllustrations(): void {
     const illustration = scene.querySelector<HTMLImageElement>("[data-history-illustration]")!;
     const revealIllustration = () => {
       scene.classList.add("is-illustration-ready");
-      refreshScrollMeasurements();
     };
     if (illustration.complete && illustration.naturalWidth > 0) revealIllustration();
     else illustration.addEventListener("load", revealIllustration, { once: true });
@@ -1250,13 +1267,20 @@ async function initializeGlazeTransition(): Promise<void> {
   try {
     const { default: lottie } = await import("lottie-web/build/player/lottie_light.js");
     const glazeAnimation = lottie.loadAnimation({ container: glazeContainer, renderer: "svg", loop: false, autoplay: false, path: "./lottie/time-in-glaze.json" });
+    glazeAnimation.setSubframe(false);
     glazeAnimation.addEventListener("DOMLoaded", () => {
+      let lastFrame = -1;
       ScrollTrigger.create({
         trigger: ".glaze-transition",
         start: "top bottom",
         end: "bottom top",
         scrub: 0.45,
-        onUpdate: (self) => glazeAnimation.goToAndStop(self.progress * Math.max(0, glazeAnimation.totalFrames - 1), true),
+        onUpdate: (self) => {
+          const frame = Math.round(self.progress * Math.max(0, glazeAnimation.totalFrames - 1));
+          if (frame === lastFrame) return;
+          lastFrame = frame;
+          glazeAnimation.goToAndStop(frame, true);
+        },
       });
       refreshScrollMeasurements();
     });
@@ -1267,8 +1291,13 @@ async function initializeGlazeTransition(): Promise<void> {
   }
 }
 
+let refreshFrame = 0;
 function refreshScrollMeasurements(): void {
-  requestAnimationFrame(() => ScrollTrigger.refresh());
+  if (refreshFrame) return;
+  refreshFrame = requestAnimationFrame(() => {
+    refreshFrame = 0;
+    ScrollTrigger.refresh();
+  });
 }
 
 function renderSources(): void {

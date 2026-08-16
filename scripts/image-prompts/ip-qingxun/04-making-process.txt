@@ -1,0 +1,12 @@
+Use case: infographic-diagram
+Asset type: finished cultural IP making-process board, portrait 3:4
+Input images: Image 1 is the master "青寻" turnaround. Preserve the exact final character identity.
+Primary request: Create a six-stage visual making journey that connects Longquan celadon craft to the birth of the mascot: clay preparation, wheel forming of the round-shouldered vessel, trimming the foot and rim, applying powder-celadon glaze, firing in a kiln with warm controlled fire, and the finished "青寻" character awakening with credential and notebook. Show skilled adult artisan hands and tools where needed; no identifiable person. The final stage must match Image 1 exactly.
+Scene/backdrop: porcelain-white paper, clean museum-process layout, six sequential image windows linked by one thin mineral blue-green line, restrained cinnabar stage dots.
+Style/medium: tactile documentary-style miniature diorama photography blended with refined editorial illustration; realistic clay, wet glaze, kiln brick, and finished ceramic surfaces.
+Composition/framing: clear top-to-bottom or serpentine six-stage sequence, each stage visually distinct and readable, no tiny captions.
+Lighting/mood: earthy workshop light transitioning to soft museum daylight; respectful craftsmanship.
+Color palette: raw clay gray-brown, powder celadon, mineral blue-green, porcelain, kiln dark, warm fire, restrained cinnabar.
+Text (verbatim): "青寻｜制作过程"
+Constraints: Render the title exactly once and no other words. Craft order must be plausible. Final character must preserve the master design. This is an artistic educational visualization, not claimed documentary evidence. No logos, no watermark.
+Avoid: child potter, magical instant transformation, industrial factory, excessive flames, fake historical costume, random tools, anime workshop, copying supplied reference process layout.

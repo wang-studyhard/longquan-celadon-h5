@@ -1,0 +1,216 @@
+{
+  "site": {
+    "title": "一器千年｜龙泉青瓷社会实践成果展",
+    "description": "从一器之形，走进千年窑火与今日龙泉。‘浙里的青瓷真好看’暑期社会实践成果展。",
+    "team": "浙里的青瓷真好看",
+    "updatedAt": "2026.08.15"
+  },
+  "history": [
+    {
+      "id": "origin",
+      "index": "01",
+      "stage": "源流",
+      "period": "北宋前期",
+      "title": "窑场初开，青色成形",
+      "summary": "故宫博物院资料显示，龙泉窑始烧于北宋前期，窑址位于今浙江龙泉一带。早期生产为后来南宋至元的扩展提供了基础；这一阶段的重点，不是追认某件名器，而是看窑场、原料处理与成形技艺如何逐步汇成体系。",
+      "visualImage": "./images/history/origin-baimiao.png",
+      "visualCaption": "北宋窑场 · 匠人拉坯成形",
+      "sourceIds": ["S01"],
+      "verifiedBy": "公开资料核对",
+      "verifiedAt": "2026-08-10"
+    },
+    {
+      "id": "peak",
+      "index": "02",
+      "stage": "鼎盛",
+      "period": "南宋至元",
+      "title": "粉青如玉，大器渐成",
+      "summary": "南宋至元是龙泉窑的鼎盛期。南宋中期烧成著名的粉青釉，器类更为丰富；元代则在大型器物烧造上取得突出成就。温润的釉层、稳定的成形能力与不断扩大的窑业规模，共同塑造了龙泉青瓷成熟而多样的面貌。",
+      "visualImage": "./images/history/peak-baimiao.png",
+      "visualCaption": "南宋窑场 · 修坯与施釉",
+      "sourceIds": ["S01"],
+      "verifiedBy": "公开资料核对",
+      "verifiedAt": "2026-08-10"
+    },
+    {
+      "id": "journey",
+      "index": "03",
+      "stage": "远播",
+      "period": "12至15世纪",
+      "title": "随舟越海，青色远行",
+      "summary": "故宫博物院“天下龙泉”展览指出，12至15世纪间，龙泉青瓷由东亚传至西亚、非洲与东欧。海外需求也反过来影响器类、造型和装饰；它的远播并非一条想象的航线，而是由跨区域遗存与不同地区仿烧现象共同印证。",
+      "visualImage": "./images/history/journey-baimiao.png",
+      "visualCaption": "元代窑场 · 大盘刻花装饰",
+      "sourceIds": ["S02"],
+      "verifiedBy": "公开资料核对",
+      "verifiedAt": "2026-08-10"
+    },
+    {
+      "id": "change",
+      "index": "04",
+      "stage": "转型",
+      "period": "明代至明中期以后",
+      "title": "明代续烧，窑业渐变",
+      "summary": "明代龙泉窑继续烧造，并长期面向宫廷与广泛市场；至明代中期以后，故宫博物院资料记载其渐趋衰落。这里的“转型”并非窑火骤然终止，而是生产规模、市场方向与器物风格在更长时段中逐步发生改变。",
+      "visualImage": "./images/history/change-baimiao.png",
+      "visualCaption": "明代窑场 · 装匣入窑",
+      "sourceIds": ["S01", "S02"],
+      "verifiedBy": "公开资料核对",
+      "verifiedAt": "2026-08-10"
+    },
+    {
+      "id": "revival",
+      "index": "05",
+      "stage": "复兴",
+      "period": "2009年至今",
+      "title": "列入非遗，手艺新生",
+      "summary": "2009年，龙泉青瓷传统烧制技艺列入联合国教科文组织人类非物质文化遗产代表作名录。今天，备料、成形、修坯、施釉与烧成等核心工序仍由匠人延续；传统不只留在器物上，也作为可传授、可实践的知识进入当代生活。",
+      "visualImage": "./images/history/revival-baimiao.png",
+      "visualCaption": "当代工坊 · 匠人验釉观色",
+      "sourceIds": ["S03"],
+      "verifiedBy": "公开资料核对",
+      "verifiedAt": "2026-08-10"
+    }
+  ],
+  "routeStops": [
+    {
+      "id": "museum",
+      "order": 1,
+      "name": "龙泉青瓷博物馆",
+      "shortName": "青瓷博物馆",
+      "description": "从馆藏器物与窑业史出发，建立这次田野走访的历史坐标。",
+      "icon": "museum",
+      "image": "./images/route/longquan-celadon-museum.jpg",
+      "imageAlt": "龙泉青瓷博物馆入口大厅及馆名题字",
+      "imageSourceId": "S04",
+      "coordinates": { "longitude": 119.132597, "latitude": 28.054944 },
+      "coordinateSource": "360地图公开地点检索",
+      "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E9%9D%92%E7%93%B7%E5%8D%9A%E7%89%A9%E9%A6%86",
+      "approximatePosition": { "x": 92, "y": 26 },
+      "displayPosition": { "x": 78, "y": 39 },
+      "verifiedByTeam": true
+    },
+    {
+      "id": "taoxichuan",
+      "order": 2,
+      "name": "望瓯·陶溪川",
+      "shortName": "望瓯·陶溪川",
+      "description": "沿瓯江进入当代文创街区，观察青瓷文化如何进入城市公共生活。",
+      "icon": "district",
+      "image": "./images/route/wangou-taoxichuan.jpg",
+      "imageAlt": "瓯江沿岸的望瓯陶溪川建筑群与城市景观",
+      "imageSourceId": "S05",
+      "coordinates": { "longitude": 119.112844, "latitude": 28.065055 },
+      "coordinateSource": "360地图公开地点检索",
+      "mapHref": "https://map.360.cn/?k=%E6%9C%9B%E7%93%AF%C2%B7%E9%99%B6%E6%BA%AA%E5%B7%9D&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
+      "approximatePosition": { "x": 86, "y": 18 },
+      "displayPosition": { "x": 59, "y": 26 },
+      "verifiedByTeam": true
+    },
+    {
+      "id": "kiln-factory",
+      "order": 3,
+      "name": "龙泉市古窑瓷厂",
+      "shortName": "古窑瓷厂",
+      "description": "在上垟镇窑业现场辨认烟囱、厂房与青瓷生产留下的空间痕迹。",
+      "icon": "kiln",
+      "image": "./images/route/longquan-kiln-factory.jpg",
+      "imageAlt": "龙泉上垟青瓷小镇窑厂建筑、烟囱与国际非遗文化中心标识",
+      "imageSourceId": "S06",
+      "coordinates": { "longitude": 118.877684, "latitude": 27.973692 },
+      "coordinateSource": "360地图公开企业地点检索",
+      "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E5%B8%82%E5%8F%A4%E7%AA%91%E7%93%B7%E5%8E%82&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
+      "approximatePosition": { "x": 8, "y": 87 },
+      "displayPosition": { "x": 19, "y": 74 },
+      "verifiedByTeam": true
+    },
+    {
+      "id": "west-street",
+      "order": 4,
+      "name": "龙泉市景及西街",
+      "shortName": "市景及西街",
+      "description": "回到西街历史文化街区，在老街、手艺与日常生活之间完成城市观察。",
+      "icon": "street",
+      "image": "./images/route/longquan-west-street.jpg",
+      "imageAlt": "龙泉西街三江口古树与街区步道",
+      "imageSourceId": "S07",
+      "coordinates": { "longitude": 119.119911, "latitude": 28.071827 },
+      "coordinateSource": "360地图公开地点检索",
+      "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E5%B8%82%E8%A5%BF%E8%A1%97%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E8%A1%97%E5%8C%BA&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
+      "approximatePosition": { "x": 88, "y": 11 },
+      "displayPosition": { "x": 78, "y": 15 },
+      "verifiedByTeam": true
+    }
+  ],
+  "results": [
+    { "id": "documentary-01", "category": "documentary", "fixedOrder": 1, "index": "01", "aspectRatio": "16:9", "status": "pending" },
+    { "id": "interview-01", "category": "interview", "fixedOrder": 1, "index": "01", "aspectRatio": "16:9", "status": "pending" },
+    { "id": "interview-02", "category": "interview", "fixedOrder": 2, "index": "02", "aspectRatio": "16:9", "status": "pending" },
+    { "id": "post-01", "category": "post", "fixedOrder": 1, "index": "01", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "post-02", "category": "post", "fixedOrder": 2, "index": "02", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "post-03", "category": "post", "fixedOrder": 3, "index": "03", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "post-04", "category": "post", "fixedOrder": 4, "index": "04", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "news-01", "category": "news", "fixedOrder": 1, "index": "01", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "news-02", "category": "news", "fixedOrder": 2, "index": "02", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "news-03", "category": "news", "fixedOrder": 3, "index": "03", "aspectRatio": "4:3", "status": "pending" },
+    { "id": "oral-history-01", "category": "oralHistory", "fixedOrder": 1, "index": "01", "aspectRatio": "4:3", "status": "pending" }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "title": "龙泉窑",
+      "publisher": "故宫博物院",
+      "href": "https://www.dpm.org.cn/lemmas/239399.html",
+      "license": "公开网页，仅作资料引用",
+      "accessedAt": "2026.08.10"
+    },
+    {
+      "id": "S02",
+      "title": "天下龙泉：龙泉青瓷与全球化",
+      "publisher": "故宫博物院",
+      "href": "https://gugongzhanlan.dpm.org.cn/exhibitShare/89",
+      "license": "公开网页，仅作资料引用",
+      "accessedAt": "2026.08.10"
+    },
+    {
+      "id": "S03",
+      "title": "Traditional firing technology of Longquan celadon",
+      "publisher": "UNESCO Intangible Cultural Heritage",
+      "href": "https://ich.unesco.org/en/RL/traditional-firing-technology-of-longquan-celadon-00205",
+      "license": "公开名录页，仅作资料引用",
+      "accessedAt": "2026.08.10"
+    },
+    {
+      "id": "S04",
+      "title": "龙泉青瓷博物馆，2022-09-29 02",
+      "publisher": "Wikimedia Commons · Siyuwj",
+      "href": "https://commons.wikimedia.org/wiki/File:%E9%BE%99%E6%B3%89%E9%9D%92%E7%93%B7%E5%8D%9A%E7%89%A9%E9%A6%86,_2022-09-29_02.jpg",
+      "license": "CC BY-SA 4.0",
+      "accessedAt": "2026.08.15"
+    },
+    {
+      "id": "S05",
+      "title": "万众瞩目，龙泉望瓯·陶溪川正式亮相！",
+      "publisher": "龙泉旅游 · 腾讯新闻",
+      "href": "https://new.qq.com/rain/a/20230529A07GU800",
+      "license": "公开报道配图，未标注开放许可",
+      "accessedAt": "2026.08.15"
+    },
+    {
+      "id": "S06",
+      "title": "龙泉访青瓷小记：古窑厂和新民宿",
+      "publisher": "澎湃新闻",
+      "href": "https://www.thepaper.cn/newsDetail_forward_5335969",
+      "license": "公开报道配图，未标注开放许可",
+      "accessedAt": "2026.08.15"
+    },
+    {
+      "id": "S07",
+      "title": "跟着《剑来》走进“仙侠第一城”龙泉",
+      "publisher": "龙泉旅游 · 腾讯新闻",
+      "href": "https://news.qq.com/rain/a/20240822A07NQ300",
+      "license": "公开报道配图，未标注开放许可",
+      "accessedAt": "2026.08.15"
+    }
+  ]
+}

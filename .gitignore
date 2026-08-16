@@ -1,0 +1,14 @@
+node_modules/
+dist/
+release/
+.vite/
+playwright-report/
+test-results/
+screenshots/
+public/qr/
+offline-package/
+longquan-celadon-offline.zip
+artifacts/
+*.log
+.env
+.env.*.local

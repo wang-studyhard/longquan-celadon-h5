@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="5" fill="#9b4038"/>
+  <path d="M18 16h28v4H18zm2 10h24v4H20zm-4 10h32v4H16zm6 10h20v4H22z" fill="#f3f5f0" opacity=".22"/>
+  <text x="32" y="43" text-anchor="middle" font-size="33" font-family="serif" fill="#f3f5f0">瓷</text>
+</svg>

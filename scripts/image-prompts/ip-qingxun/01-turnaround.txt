@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: finished cultural IP character design board, portrait 3:4
+Primary request: Create an original non-human Longquan celadon fieldwork mascot named "青寻". This is the master character sheet and must establish a highly consistent, product-ready silhouette.
+Scene/backdrop: high-key porcelain-white paper with faint handmade fibers, minimal museum publication layout, thin mineral blue-green rules, one restrained cinnabar seal accent.
+Subject: "青寻" is an anthropomorphic low-mouth, short-neck, round-shouldered, full-bellied Longquan celadon vase. Powder-celadon body with thick jade-like glaze, gentle ceramic highlights, no all-over crackle. A tiny warm kiln flame is visible inside the open mouth. Face is minimal: two small ink-dot eyes and one short curved mouth on the upper belly, no human hair. Short dark mineral-blue brushstroke arms and legs, simple rounded celadon feet. A narrow cinnabar fieldwork credential hangs cross-body; a small folded field notebook is secured at the back. Show three full-body orthographic views: front, left profile, back, equal scale, aligned baseline. Add two enlarged material-detail circles: glaze/rim and credential/notebook.
+Style/medium: refined 3D ceramic collectible character mixed with precise editorial concept-sheet drawing; contemporary Eastern museum publication; elegant, intelligent, warm, not childish anime.
+Composition/framing: clean portrait board; large front view as the primary anchor and smaller equal profile/back views; generous negative space; every figure fully visible.
+Lighting/mood: soft museum studio daylight, quiet curiosity, subtle grounding shadows only beneath feet.
+Color palette: porcelain #F2F0E8, powder celadon #A9C1B1, mineral blue-green #244F5B, kiln dark #102F33, restrained cinnabar #A34438, tiny warm kiln amber.
+Text (verbatim): "青寻｜IP三视图"
+Constraints: Render the title exactly once and no other words. Strong identical character proportions across all views. Original design only. The reference screenshots are category-planning references only and must not influence character, costume, pose, composition, linework, or decoration. No logos, no watermark.
+Avoid: human girl or boy, hanfu, green hair, hair buns, floral headpiece, anime eyes, rosy cheeks, tea cup, lotus decoration, dragon horns, fantasy fairy, ornate costume, generic chibi child, copying any supplied reference image, dense labels, fake Chinese text.

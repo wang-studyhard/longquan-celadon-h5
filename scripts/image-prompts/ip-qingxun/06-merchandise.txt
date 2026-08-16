@@ -1,0 +1,12 @@
+Use case: product-mockup
+Asset type: finished cultural IP merchandise family board, portrait 3:4
+Input images: Image 1 is the master "青寻" turnaround. Preserve the exact character identity.
+Primary request: Present a coherent, manufacturable cultural merchandise collection using the same "青寻" mascot and its visual system: one small ceramic desk figurine, enamel pin, acrylic keychain, field notebook, canvas tote, sticker sheet, insulated bottle, phone grip, postcard set, and a simple collector box. Apply the character sparingly and adaptively; use the vase silhouette, rim circle, contour route, folded notebook, and cinnabar credential as repeatable motifs. Products must look real and production-ready.
+Scene/backdrop: clean porcelain-white studio sweep with a restrained field-note grid and mineral blue-green rules; premium museum shop catalog styling.
+Style/medium: photorealistic product mockup with accurate ceramic, enamel, acrylic, paper, canvas, metal, and printed surfaces; contemporary Eastern cultural retail.
+Composition/framing: organized but natural product family arrangement, one hero figurine, all products fully visible, no card-within-card layout.
+Lighting/mood: soft commercial studio daylight, honest materials, subtle grounding shadows.
+Color palette: porcelain, powder celadon, mineral blue-green, kiln dark, restrained cinnabar; avoid one-note all-green styling.
+Text (verbatim): "青寻｜产品周边"
+Constraints: Render the title exactly once and no other words. Preserve the master mascot identity on every application. No trademarked device designs, no logos, no watermark.
+Avoid: tissue box, headphones, umbrella, generic anime goods pile, random merchandise not listed, excessive character repetition, illegible microtext, glossy plastic everywhere, copying supplied reference product lineup.

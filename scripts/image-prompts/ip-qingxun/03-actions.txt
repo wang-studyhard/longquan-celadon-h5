@@ -1,0 +1,12 @@
+Use case: identity-preserve
+Asset type: finished cultural IP action-derivative board, portrait 3:4
+Input images: Image 1 is the master "青寻" turnaround. Preserve the exact character identity.
+Primary request: Show six dynamic full-body action derivatives of the same mascot, expressing the team's real fieldwork method: walking a mountain route with the folded notebook, carefully observing a celadon object without touching it, recording notes, conducting an interview with a small handheld recorder, photographing documentary material, and sharing the finished story to the public with an unfolding paper route ribbon. Each action must be clear without captions.
+Scene/backdrop: porcelain-white publication paper with faint Longquan contour lines and restrained numbered field-note marks; no literal tourist scenery.
+Style/medium: same ceramic collectible character rendered as elegant editorial action studies; clean silhouettes; contemporary museum identity.
+Composition/framing: asymmetrical 2 by 3 layout with subtle movement arcs; all six figures fully visible, distinct poses, stable character scale.
+Lighting/mood: soft daylight, observant, active, respectful.
+Color palette: preserve Image 1; cinnabar only for credential and small route points.
+Text (verbatim): "青寻｜行动衍生"
+Constraints: Render the title exactly once and no other words. Preserve every master-character feature and proportion. Cultural work must feel careful and evidence-led, not fantasy adventure. No logos, no watermark.
+Avoid: dancing, fighting, magic, tea-serving pose, hanfu performance, archeology excavation, handling museum objects barehanded, anime motion effects, copying supplied reference poses.

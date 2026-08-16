@@ -1,0 +1,12 @@
+Use case: ads-marketing
+Asset type: finished vertical cultural campaign poster, portrait 3:4
+Input images: Image 1 is the master "青寻" turnaround. Preserve the exact character identity.
+Primary request: Design an original hero poster for the team's Longquan celadon social-practice exhibition. The same "青寻" mascot stands as a quiet guide at the lower center, holding its folded field notebook open. From the notebook rises a restrained paper-cut route that becomes Longquan mountain contours, a long kiln silhouette, a sea-sail line, and finally returns to the vase rim, communicating one vessel connecting craft, city, history, and public storytelling.
+Scene/backdrop: immersive porcelain-paper field with layered ink-wash Longquan mountains, faint celadon shard geometry, mineral blue-green linework, and one cinnabar seal; no decorative cards.
+Style/medium: contemporary Eastern museum poster, editorial collage with refined ceramic character, strong negative space, premium cultural institution finish.
+Composition/framing: vertical poster; bold asymmetrical negative space; mascot fully visible; visual route flows upward; clean title zone.
+Lighting/mood: luminous porcelain daylight with a subtle warm kiln glow, contemplative and forward-looking.
+Color palette: porcelain, powder celadon, mineral blue-green, kiln dark, restrained cinnabar, tiny kiln amber.
+Text (verbatim): "一器千年" and "青色新生"
+Constraints: Render each exact phrase once and no other words. Preserve the master character exactly. The poster must communicate fieldwork and public cultural transmission, not tourism advertising. No logos, no watermark.
+Avoid: anime movie poster, fantasy landscape, decorative dragons, palace imagery, generic ancient scroll, centered symmetrical product ad, green monochrome wash, copying supplied reference poster composition.

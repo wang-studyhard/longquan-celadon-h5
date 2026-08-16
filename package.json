@@ -1,0 +1,35 @@
+{
+  "name": "longquan-celadon-h5",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build.mjs preview",
+    "build:production": "node scripts/build.mjs production",
+    "build:offline": "node scripts/build.mjs offline",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test:content": "node scripts/test-content-validation.mjs",
+    "validate": "node scripts/validate-content.mjs preview",
+    "validate:production": "node scripts/validate-content.mjs production",
+    "package:offline": "node scripts/package-offline.mjs",
+    "generate:qr": "node scripts/generate-qr.mjs",
+    "qa:visual": "node scripts/visual-qa.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-sans-sc": "^5.3.0",
+    "@fontsource-variable/noto-serif-sc": "^5.3.0",
+    "@fontsource/ma-shan-zheng": "5.2.5",
+    "gsap": "^3.13.0",
+    "lottie-web": "^5.13.0",
+    "lucide": "^0.468.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "playwright-core": "^1.62.1",
+    "qrcode": "^1.5.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}

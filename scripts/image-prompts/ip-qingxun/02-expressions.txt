@@ -1,0 +1,12 @@
+Use case: identity-preserve
+Asset type: finished cultural IP expression sticker board, portrait 3:4
+Input images: Image 1 is the master "青寻" turnaround. Preserve the exact character identity.
+Primary request: Recompose the same non-human Longquan celadon vase mascot into a polished expression-pack board with eight isolated bust or full-body stickers: curious, delighted, focused recording, surprised, thinking, tired-but-persistent, proud after completing fieldwork, and warmly waving hello. Expressions must come from the minimal ink-dot eyes, curved mouth, arm gesture, body tilt, and the tiny kiln flame; do not add a human face.
+Scene/backdrop: porcelain-white paper, faint fibers, orderly 4 by 2 editorial grid, thin mineral blue-green dividers, restrained cinnabar number marks.
+Style/medium: same refined 3D ceramic collectible plus editorial illustration treatment as Image 1; clean sticker-ready silhouettes with soft off-white keyline.
+Composition/framing: eight equal cells, consistent scale, no cropping, generous breathing room.
+Lighting/mood: soft museum studio light, lively but restrained.
+Color palette: preserve Image 1 exactly.
+Text (verbatim): "青寻｜表情包"
+Constraints: Render the title exactly once and no other words. Do not redesign the character; preserve vase proportions, rim, minimal face, arms, legs, celadon feet, cinnabar credential, back notebook, glaze color, and kiln flame. No logos, no watermark.
+Avoid: new clothing, human hair, anime facial features, speech bubbles, random typography, overly cute baby proportions, copying supplied reference characters.

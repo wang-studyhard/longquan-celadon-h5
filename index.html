@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f2f0e8" />
+    <meta name="description" content="从一器之形，走进千年窑火与今日龙泉。‘浙里的青瓷真好看’暑期社会实践成果展。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="一器千年｜龙泉青瓷社会实践成果展" />
+    <meta property="og:description" content="龙泉青瓷／一器千年·青年寻访" />
+    <meta property="og:url" content="%VITE_SITE_URL%" />
+    <meta property="og:image" content="%VITE_SITE_URL%og-cover.png" />
+    <link rel="canonical" href="%VITE_SITE_URL%" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>一器千年｜龙泉青瓷社会实践成果展</title>
+  </head>
+  <body>
+    <!--
+      THESIS: One celadon vessel carries the visitor from an editorial cover into history and fieldwork; this refuses both the dark-museum template and the imitation scroll page.
+      OWN-WORLD: Porcelain paper, mineral blue-green ink, powder-celadon specimens, asymmetric rules, oversized Song type, field-note indexing, and one cinnabar seal.
+      STORY: A Longquan world gathers inside a two-dimensional vessel, then separates into illustrated glaze fragments before a smaller vessel follows the historical spiral.
+      FIRST VIEWPORT: An oversized two-line Longquan Celadon title anchors the left page while a round-shouldered celadon vase holds the center; fieldwork identity, English folio, subtitle and next chapter complete the cover.
+      FORM: Contemporary cultural-exhibition broadsheet, assigned grounded direction 7; seed 9b56475e.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+    <header class="site-header" data-header>
+      <a class="wordmark" href="#form" aria-label="回到器形初见">
+        <span class="seal" aria-hidden="true">瓷</span>
+      </a>
+      <nav class="desktop-nav" aria-label="主要章节" data-desktop-nav>
+        <a href="#form" data-index="01">器形初见</a>
+        <a href="#history" data-index="02">青瓷千年</a>
+        <a href="#longquan" data-index="03">今日龙泉</a>
+        <a href="#results" data-index="04">实践成果</a>
+        <a href="#creative" data-index="05">文创展示</a>
+        <a href="#about" data-index="06">团队信息</a>
+      </nav>
+      <button class="icon-button menu-toggle" type="button" aria-label="打开章节菜单" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <nav class="mobile-nav" id="mobile-navigation" aria-label="移动端章节菜单" aria-hidden="true" data-mobile-nav>
+        <a href="#form" data-index="01">器形初见</a>
+        <a href="#history" data-index="02">青瓷千年</a>
+        <a href="#longquan" data-index="03">今日龙泉</a>
+        <a href="#results" data-index="04">实践成果</a>
+        <a href="#creative" data-index="05">文创展示</a>
+        <a href="#about" data-index="06">团队信息</a>
+      </nav>
+    </header>
+
+    <div class="celadon-world" data-celadon-world aria-hidden="true">
+      <picture class="celadon-backdrop" data-celadon-backdrop>
+        <source media="(max-aspect-ratio: 4/5)" srcset="./images/hero/celadon-portrait.png" />
+        <img src="./images/hero/celadon-landscape.png" alt="" width="1024" height="1024" decoding="async" fetchpriority="high" />
+      </picture>
+      <div class="celadon-artwork" data-celadon-artwork>
+        <svg viewBox="0 0 420 720" role="presentation">
+          <defs>
+            <clipPath id="hero-vessel-clip">
+              <path d="M110 58 C146 44 274 44 310 58 L306 88 C266 101 154 101 114 88 Z M140 88 C143 130 151 162 119 191 C74 230 55 293 58 393 C61 511 106 600 162 628 C190 644 230 644 258 628 C314 600 359 511 362 393 C365 293 346 230 301 191 C269 162 277 130 280 88 Z"></path>
+            </clipPath>
+            <radialGradient id="hero-celadon-glaze" cx="38%" cy="25%" r="76%">
+              <stop offset="0" stop-color="#d8e1d7"></stop>
+              <stop offset="0.52" stop-color="#a9c1b1"></stop>
+              <stop offset="1" stop-color="#789f8a"></stop>
+            </radialGradient>
+            <mask id="hero-growth-mask" x="0" y="0" width="420" height="720" maskUnits="userSpaceOnUse">
+              <rect width="420" height="720" fill="#000"></rect>
+              <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+                <path class="vessel-growth-path vessel-growth-path--trunk" d="M210 668 C198 606 226 548 205 482 C187 426 230 369 210 309 C191 251 219 191 210 106" stroke-width="170"></path>
+                <path class="vessel-growth-path" d="M207 566 C160 552 108 520 66 468" stroke-width="132"></path>
+                <path class="vessel-growth-path" d="M211 513 C264 493 316 454 354 405" stroke-width="132"></path>
+                <path class="vessel-growth-path" d="M206 414 C158 389 106 347 69 292" stroke-width="122"></path>
+                <path class="vessel-growth-path" d="M212 353 C264 329 317 286 351 233" stroke-width="122"></path>
+              </g>
+            </mask>
+            <clipPath id="hero-shard-01"><polygon points="55,220 210,220 218,360 52,380"></polygon></clipPath>
+            <clipPath id="hero-shard-02"><polygon points="210,220 365,220 368,380 218,360"></polygon></clipPath>
+            <clipPath id="hero-shard-03"><polygon points="52,380 218,360 190,510 56,535"></polygon></clipPath>
+            <clipPath id="hero-shard-04"><polygon points="218,360 368,380 364,535 190,510"></polygon></clipPath>
+            <clipPath id="hero-shard-05"><polygon points="56,535 190,510 204,650 90,680"></polygon></clipPath>
+            <clipPath id="hero-shard-06"><polygon points="190,510 364,535 330,680 204,650"></polygon></clipPath>
+            <clipPath id="hero-shard-07"><polygon points="105,40 315,40 295,120 125,120"></polygon></clipPath>
+            <clipPath id="hero-shard-08"><polygon points="125,120 210,120 210,220 55,260"></polygon></clipPath>
+            <clipPath id="hero-shard-09"><polygon points="210,120 295,120 365,260 210,220"></polygon></clipPath>
+          </defs>
+          <ellipse class="celadon-artwork__ground" cx="210" cy="656" rx="112" ry="10"></ellipse>
+          <g class="vessel-art" clip-path="url(#hero-vessel-clip)">
+            <rect class="vessel-art__base" width="420" height="720" fill="url(#hero-celadon-glaze)"></rect>
+            <image class="vessel-art__wash" href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image>
+            <g class="vessel-art__growth" mask="url(#hero-growth-mask)"><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g>
+            <image class="vessel-art__color" href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image>
+          </g>
+          <g class="celadon-shards">
+            <g class="celadon-shard" data-shard-x="-0.48" data-shard-y="-0.22" data-shard-rotation="-24" data-shard-scale="1.08"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-01)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="0.06" data-shard-y="-0.28" data-shard-rotation="19" data-shard-scale="0.92"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-02)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="-0.58" data-shard-y="0.02" data-shard-rotation="14" data-shard-scale="0.86"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-03)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="0.1" data-shard-y="0.06" data-shard-rotation="-18" data-shard-scale="1.02"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-04)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="-0.42" data-shard-y="0.32" data-shard-rotation="27" data-shard-scale="0.96"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-05)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="0.08" data-shard-y="0.34" data-shard-rotation="-12" data-shard-scale="0.82"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-06)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="-0.22" data-shard-y="-0.42" data-shard-rotation="8" data-shard-scale="0.72"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-07)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="-0.66" data-shard-y="-0.12" data-shard-rotation="-31" data-shard-scale="0.76"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-08)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+            <g class="celadon-shard" data-shard-x="0.14" data-shard-y="-0.1" data-shard-rotation="34" data-shard-scale="0.74"><g clip-path="url(#hero-vessel-clip)"><g clip-path="url(#hero-shard-09)"><rect width="420" height="720" fill="url(#hero-celadon-glaze)"></rect><image href="./images/hero/celadon-elements.png" x="-45" y="0" width="510" height="720" preserveAspectRatio="xMidYMid slice"></image></g></g></g>
+          </g>
+          <use class="celadon-artwork__outline" href="#round-shoulder-vase-shape"></use>
+        </svg>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <section class="hero" id="form" data-section="form">
+        <div class="hero-sticky">
+          <p class="hero-identity">“浙里的青瓷真好看”<br />暑期社会实践成果展</p>
+          <p class="hero-en">LONGQUAN CELADON<br />FORM IN LIGHT</p>
+          <h1 aria-label="龙泉青瓷"><span>龙泉</span><span>青瓷</span></h1>
+          <p class="hero-subtitle">从一器之形，<br />走进千年窑火与今日龙泉。</p>
+          <a class="next-chapter" href="#history">
+            <span>青瓷千年</span><i data-lucide="arrow-down" aria-hidden="true"></i>
+          </a>
+          <div class="hero-progress" aria-hidden="true"><span></span></div>
+        </div>
+      </section>
+
+      <section class="glaze-transition" aria-label="进入青瓷历史">
+        <div class="glaze-lottie" data-glaze-lottie aria-hidden="true"></div>
+        <p><span>器成而裂</span><span>釉片成章</span></p>
+      </section>
+
+      <section class="history" id="history" data-section="history">
+        <div class="chapter-portal chapter-portal--history" data-chapter-portal data-portal-variant="history">
+          <div class="chapter-portal__sticky">
+            <figure class="chapter-portal__frame">
+              <img src="./images/chapters/history.jpg" width="1535" height="1024" loading="lazy" decoding="async" alt="艺术化绘制的青瓷器、山水与窑火场景" />
+              <span class="chapter-portal__veil" aria-hidden="true"></span>
+              <figcaption class="chapter-portal__art-note">艺术化视觉 · 非史料图像</figcaption>
+            </figure>
+            <div class="chapter-portal__copy-shell">
+              <header class="section-heading history-heading chapter-portal__copy">
+                <div class="chapter-portal__title">
+                  <p class="section-en">A MILLENNIUM OF CELADON</p>
+                  <h2>青瓷千年</h2>
+                </div>
+                <p class="chapter-portal__summary">从源流、鼎盛到远播、转型与复兴，器形、釉色与人的往来共同构成这条时间线。</p>
+              </header>
+            </div>
+          </div>
+        </div>
+
+        <nav class="history-timeline history-timeline-mobile" aria-label="历史节点" data-history-timeline-mobile></nav>
+        <div class="history-scroll">
+          <svg class="history-axis" viewBox="0 0 240 5000" preserveAspectRatio="none" aria-hidden="true">
+            <path class="history-axis-base" d="M120 0 C180 180 180 430 120 625 S60 1060 120 1250 S180 1685 120 1875 S60 2310 120 2500 S180 2935 120 3125 S60 3560 120 3750 S180 4185 120 4375 S60 4810 120 5000" />
+            <path class="history-axis-progress" data-history-axis-progress d="M120 0 C180 180 180 430 120 625 S60 1060 120 1250 S180 1685 120 1875 S60 2310 120 2500 S180 2935 120 3125 S60 3560 120 3750 S180 4185 120 4375 S60 4810 120 5000" />
+          </svg>
+          <div class="history-traveler" data-history-traveler aria-hidden="true">
+            <svg viewBox="0 0 180 280" role="presentation">
+              <defs>
+                <linearGradient id="history-celadon-glaze" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#6f9b83"></stop>
+                  <stop offset="0.28" stop-color="#aec8b7"></stop>
+                  <stop offset="0.52" stop-color="#d7e2d9"></stop>
+                  <stop offset="0.76" stop-color="#9fbeaa"></stop>
+                  <stop offset="1" stop-color="#5f8b75"></stop>
+                </linearGradient>
+                <radialGradient id="history-celadon-light" cx="38%" cy="25%" r="72%">
+                  <stop offset="0" stop-color="#f0f3ed" stop-opacity=".72"></stop>
+                  <stop offset=".55" stop-color="#bdd1c3" stop-opacity=".14"></stop>
+                  <stop offset="1" stop-color="#315f50" stop-opacity=".26"></stop>
+                </radialGradient>
+                <clipPath id="history-vessel-clip">
+                  <path d="M67 24C69 16 111 16 113 24l-2 10c-5 7-6 16-3 26 4 12 21 18 31 34 13 20 15 51 11 82-5 36-21 61-38 71-8 5-36 5-44 0-17-10-33-35-38-71-4-31-2-62 11-82 10-16 27-22 31-34 3-10 2-19-3-26z"></path>
+                </clipPath>
+              </defs>
+              <ellipse class="history-vessel-shadow" cx="90" cy="258" rx="39" ry="8"></ellipse>
+              <g class="history-vessel-ceramic">
+                <path class="history-vessel-shell" d="M67 24C69 16 111 16 113 24l-2 10c-5 7-6 16-3 26 4 12 21 18 31 34 13 20 15 51 11 82-5 36-21 61-38 71-8 5-36 5-44 0-17-10-33-35-38-71-4-31-2-62 11-82 10-16 27-22 31-34 3-10 2-19-3-26z"></path>
+                <path class="history-vessel-light" d="M56 88c-12 23-13 58-7 91 5 29 18 49 31 58-10-29-15-61-13-95 2-30 10-50 21-68-14 1-25 5-32 14z"></path>
+                <g class="history-vessel-crackle" clip-path="url(#history-vessel-clip)">
+                  <path d="M51 112l18 12 14-18 15 21 19-12 15 18"></path>
+                  <path d="M43 151l19-10 18 18 17-14 19 17 23-13"></path>
+                  <path d="M49 188l17-14 18 17 15-13 17 18 21-13"></path>
+                  <path d="M68 124l-6 17 8 18-4 15m31-47 5 18-5 18 7 15m23-43-8 15 6 17-8 18"></path>
+                </g>
+                <g class="history-vessel-decoration">
+                  <path d="M44 137c25 9 67 9 92 0M41 151c28 10 70 10 98 0"></path>
+                  <path d="M58 161c5 13 11 21 19 29 4-12 8-20 13-29 5 10 9 18 13 29 8-8 14-17 19-30"></path>
+                </g>
+                <ellipse class="history-vessel-mouth" cx="90" cy="24" rx="24" ry="7"></ellipse>
+                <path class="history-vessel-neck-band" d="M69 35c12 4 30 4 42 0M70 49c11 4 29 4 40 0"></path>
+                <ellipse class="history-vessel-foot" cx="90" cy="248" rx="25" ry="6"></ellipse>
+                <path class="history-vessel-highlight" d="M72 73c-11 15-17 38-17 61"></path>
+              </g>
+            </svg>
+          </div>
+          <div class="history-chapters" data-history-chapters></div>
+        </div>
+      </section>
+
+      <section class="longquan" id="longquan" data-section="longquan">
+        <div class="chapter-portal chapter-portal--longquan" data-chapter-portal data-portal-variant="longquan">
+          <div class="chapter-portal__sticky">
+            <figure class="chapter-portal__frame">
+              <img src="./images/chapters/longquan.jpg" width="1402" height="1122" loading="lazy" decoding="async" alt="艺术化绘制的龙泉山水、路径、青瓷残片与田野笔记" />
+              <span class="chapter-portal__veil" aria-hidden="true"></span>
+              <figcaption class="chapter-portal__art-note">艺术化视觉 · 非史料图像</figcaption>
+            </figure>
+            <div class="chapter-portal__copy-shell">
+              <header class="section-heading map-heading chapter-portal__copy">
+                <div class="chapter-portal__title">
+                  <p class="section-en">LONGQUAN TODAY</p>
+                  <h2>今日龙泉</h2>
+                </div>
+                <p class="chapter-portal__summary">我们沿着青瓷留下的线索走进龙泉，以走访、记录、采访与传播，重新理解一件器物与一座城的关系。</p>
+              </header>
+            </div>
+          </div>
+        </div>
+        <div class="fieldwork-meta" aria-label="实践信息">
+          <span>时间 · 2026.07.26</span><span>地点 · 浙江龙泉</span><span>路线 · 四站实地走访</span>
+        </div>
+        <div class="route-map" data-route-map>
+          <div class="route-map__canvas">
+            <div class="route-map__legend" aria-hidden="true"><span>LONGQUAN / FIELD NOTES</span><span>2026.07.26</span></div>
+            <svg class="route-map__terrain" viewBox="0 0 1000 620" preserveAspectRatio="none" role="img" aria-labelledby="route-title route-desc">
+              <title id="route-title">龙泉社会实践四站路线图</title>
+              <desc id="route-desc">路线依次经过龙泉青瓷博物馆、望瓯陶溪川、龙泉市古窑瓷厂与龙泉市景及西街。圆点为公开地图坐标锚点，图标通过引线错开展示。</desc>
+              <defs>
+                <marker id="route-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M1 1.2 6.8 4 1 6.8Z" />
+                </marker>
+              </defs>
+              <g class="map-coordinate-grid" aria-hidden="true">
+                <path d="M140 22V598M300 22V598M460 22V598M620 22V598M780 22V598M940 22V598" />
+                <path d="M22 116H978M22 236H978M22 356H978M22 476H978" />
+              </g>
+              <g class="map-contours" aria-hidden="true">
+                <path d="M610 74C704 20 867 20 978 86" />
+                <path d="M570 132C696 50 875 53 1005 140" />
+                <path d="M535 201C680 98 884 103 1028 214" />
+                <path d="M-30 455C68 392 205 391 320 448C421 498 491 574 625 558" />
+                <path d="M-24 512C82 447 213 452 311 505C401 553 470 610 576 603" />
+                <path d="M28 578C118 530 218 532 300 571C343 591 379 607 421 618" />
+              </g>
+              <g class="map-region-labels" aria-hidden="true">
+                <text x="788" y="286">龙泉城区</text>
+                <text x="58" y="395">上垟窑区</text>
+              </g>
+              <g class="map-orientation" aria-hidden="true">
+                <path d="M54 112V62M54 62l-8 15M54 62l8 15" />
+                <text x="48" y="48">N</text>
+              </g>
+              <rect class="map-coordinate-frame" x="22" y="22" width="956" height="576" aria-hidden="true" />
+              <g class="map-vessel-outline" aria-hidden="true">
+                <path d="M500 70 C474 105 478 135 483 170 C445 212 420 265 426 337 C432 430 468 492 500 520 C532 492 568 430 574 337 C580 265 555 212 517 170 C522 135 526 105 500 70 Z" />
+                <path d="M483 196 C445 165 408 178 398 220 C420 205 449 209 463 234 M517 196 C555 165 592 178 602 220 C580 205 551 209 537 234" />
+              </g>
+              <g class="route-path-layer" data-route-paths></g>
+              <g class="route-anchor-layer" data-route-anchors></g>
+            </svg>
+            <div class="route-stop-layer" data-route-stops></div>
+            <p class="route-map__note">公开地图坐标关系 · 路线按团队走访顺序连接</p>
+          </div>
+          <article class="route-dossier" id="route-dossier" data-route-dossier>
+            <figure>
+              <img data-route-image src="./images/route/longquan-celadon-museum.jpg" width="1600" height="1068" loading="lazy" decoding="async" alt="龙泉青瓷博物馆入口大厅及馆名题字" />
+              <figcaption data-route-image-caption>龙泉青瓷博物馆 · 馆内入口</figcaption>
+            </figure>
+            <div class="route-dossier__copy">
+              <p class="route-dossier__index"><span data-route-current>01</span><span aria-hidden="true"> / </span><span>04</span></p>
+              <h3 data-route-title>龙泉青瓷博物馆</h3>
+              <p data-route-description>从馆藏器物与窑业史出发，建立这次田野走访的历史坐标。</p>
+              <dl>
+                <div><dt>坐标</dt><dd data-route-coordinates>28.054944°N · 119.132597°E</dd></div>
+                <div><dt>点位</dt><dd data-route-coordinate-source>360地图公开地点检索</dd></div>
+              </dl>
+              <div class="route-dossier__links">
+                <a href="#source-S04" data-route-image-source>图片来源 [S04]</a>
+                <a href="https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E9%9D%92%E7%93%B7%E5%8D%9A%E7%89%A9%E9%A6%86" target="_blank" rel="noopener noreferrer" data-route-map-link data-external-link>查看公开地图<i data-lucide="external-link" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </article>
+          <nav class="route-actions" aria-label="选择走访站点" data-route-actions></nav>
+        </div>
+        <section class="fieldwork-gallery" aria-labelledby="fieldwork-gallery-title">
+          <header class="fieldwork-gallery__heading">
+            <div>
+              <h3 id="fieldwork-gallery-title">田野现场</h3>
+              <p>七月二十六日，我们在龙泉的展馆、工坊与街巷之间，以镜头记录器物，也记录人与地方真实相遇的片刻。</p>
+            </div>
+            <p class="fieldwork-gallery__source">团队拍摄 · 2026.07.26<br />龙泉青瓷博物馆、望瓯·陶溪川、龙泉市古窑瓷厂、龙泉市景及西街</p>
+          </header>
+
+          <figure class="fieldwork-photo fieldwork-photo--lead">
+            <button type="button" data-fieldwork-photo data-full="./images/fieldwork/team-outdoor-1600.jpg" data-alt="部分团队成员与受访者在龙泉走访现场合影" data-caption="在龙泉展开田野走访 · 部分团队成员与受访者合影" aria-label="查看大图：部分团队成员与受访者在龙泉走访现场合影">
+              <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/team-outdoor-960.jpg" /><img src="./images/fieldwork/team-outdoor-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="部分团队成员与受访者在龙泉走访现场合影" /></picture>
+              <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+            </button>
+            <figcaption><span>同行</span>在龙泉展开田野走访，部分团队成员与受访者合影。</figcaption>
+          </figure>
+
+          <div class="fieldwork-gallery__feature">
+            <figure class="fieldwork-photo fieldwork-photo--portrait">
+              <button type="button" data-fieldwork-photo data-full="./images/fieldwork/vessel-detail-1600.jpg" data-alt="团队在展陈现场拍摄的一件青瓷器物" data-caption="观器 · 近距离记录青瓷的器形、釉色与纹饰" aria-label="查看大图：团队在展陈现场拍摄的一件青瓷器物">
+                <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/vessel-detail-960.jpg" /><img src="./images/fieldwork/vessel-detail-1600.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="团队在展陈现场拍摄的一件青瓷器物" /></picture>
+                <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption><span>观器</span>近距离记录青瓷的器形、釉色与纹饰。</figcaption>
+            </figure>
+
+            <figure class="fieldwork-photo fieldwork-photo--marker">
+              <button type="button" data-fieldwork-photo data-full="./images/fieldwork/studio-marker-1600.jpg" data-alt="团队在龙泉走访途中记录的工作室标识" data-caption="现场坐标 · 走访途中记录工作室信息" aria-label="查看大图：团队在龙泉走访途中记录的工作室标识">
+                <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/studio-marker-960.jpg" /><img src="./images/fieldwork/studio-marker-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="团队在龙泉走访途中记录的工作室标识" /></picture>
+                <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption><span>坐标</span>走访途中记录工作室信息，为后续路线整理留下现场依据。</figcaption>
+            </figure>
+          </div>
+
+          <div class="fieldwork-gallery__details" aria-label="青瓷观察照片，可横向滑动">
+            <figure class="fieldwork-photo">
+              <button type="button" data-fieldwork-photo data-full="./images/fieldwork/glaze-plate-1600.jpg" data-alt="展陈中的青瓷盘及釉面开片细节" data-caption="看釉 · 开片纹理在展陈光线下显现" aria-label="查看大图：展陈中的青瓷盘及釉面开片细节">
+                <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/glaze-plate-960.jpg" /><img src="./images/fieldwork/glaze-plate-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="展陈中的青瓷盘及釉面开片细节" /></picture>
+                <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption><span>看釉</span>开片纹理在展陈光线下显现。</figcaption>
+            </figure>
+            <figure class="fieldwork-photo">
+              <button type="button" data-fieldwork-photo data-full="./images/fieldwork/celadon-pair-1600.jpg" data-alt="展陈中并置的两件青瓷器物" data-caption="对照 · 不同器形与釉色同置一处" aria-label="查看大图：展陈中并置的两件青瓷器物">
+                <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/celadon-pair-960.jpg" /><img src="./images/fieldwork/celadon-pair-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="展陈中并置的两件青瓷器物" /></picture>
+                <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption><span>对照</span>不同器形与釉色同置一处。</figcaption>
+            </figure>
+            <figure class="fieldwork-photo">
+              <button type="button" data-fieldwork-photo data-full="./images/fieldwork/celadon-set-1600.jpg" data-alt="展陈中的两件粉青釉器物" data-caption="器用 · 从器物组合观察形制变化" aria-label="查看大图：展陈中的两件粉青釉器物">
+                <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/celadon-set-960.jpg" /><img src="./images/fieldwork/celadon-set-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="展陈中的两件粉青釉器物" /></picture>
+                <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption><span>器用</span>从器物组合中观察形制变化。</figcaption>
+            </figure>
+          </div>
+
+          <figure class="fieldwork-photo fieldwork-photo--closing">
+            <button type="button" data-fieldwork-photo data-full="./images/fieldwork/team-indoor-1600.jpg" data-alt="部分团队成员与受访者在青瓷展陈空间合影" data-caption="共同记录 · 部分团队成员与受访者在展陈现场合影" aria-label="查看大图：部分团队成员与受访者在青瓷展陈空间合影">
+              <picture><source media="(max-width: 720px)" srcset="./images/fieldwork/team-indoor-960.jpg" /><img src="./images/fieldwork/team-indoor-1600.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="部分团队成员与受访者在青瓷展陈空间合影" /></picture>
+              <span class="fieldwork-photo__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+            </button>
+            <figcaption><span>共同记录</span>部分团队成员与受访者在展陈现场合影。</figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <section class="results" id="results" data-section="results">
+        <div class="chapter-portal chapter-portal--results" data-chapter-portal data-portal-variant="results">
+          <div class="chapter-portal__sticky">
+            <figure class="chapter-portal__frame">
+              <img src="./images/chapters/results.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="艺术化呈现的青瓷器、相机、录音笔与稿件静物" />
+              <span class="chapter-portal__veil" aria-hidden="true"></span>
+              <figcaption class="chapter-portal__art-note">艺术化视觉 · 非史料图像</figcaption>
+            </figure>
+            <div class="chapter-portal__copy-shell">
+              <header class="section-heading results-heading chapter-portal__copy">
+                <div class="chapter-portal__title">
+                  <p class="section-en">FIELDWORK OUTCOMES</p>
+                  <h2>实践成果</h2>
+                </div>
+                <p class="chapter-portal__summary">影像先行，图文随后。尚未发布的成果保留固定展位，发布后在原位置开放入口。</p>
+              </header>
+            </div>
+          </div>
+        </div>
+        <div data-results-root></div>
+      </section>
+
+      <section class="creative" id="creative" data-section="creative" aria-labelledby="creative-title">
+        <header class="creative-intro section-heading">
+          <div>
+            <p class="section-en">CULTURAL IP &amp; CREATIVE WORKS</p>
+            <h2 id="creative-title">让“青寻”走出展柜</h2>
+          </div>
+          <p>从青瓷器形、窑火与田野记录中提炼原创 IP，让传统烧制技艺、青年寻访和公共传播在同一个形象中相遇。</p>
+        </header>
+
+        <div class="creative-exhibition" data-creative-gallery>
+          <div class="creative-stage-shell">
+            <figure class="creative-stage">
+              <button class="creative-stage__image" type="button" data-creative-expand aria-label="放大查看 IP 三视图">
+                <span class="creative-visual-stack" id="creative-stage">
+                  <img class="creative-visual is-active" data-creative-visual="0" src="./images/creative/qingxun-turnaround.jpg" width="894" height="1200" alt="青寻IP正面、侧面、背面三视图及局部设计细节" data-caption="IP 三视图｜以圆肩丰腹青瓷瓶为角色母体，窑火、田野证牌和折页记录册共同构成识别系统。" aria-hidden="false" />
+                  <img class="creative-visual" data-creative-visual="1" src="./images/creative/qingxun-expressions.jpg" width="894" height="1200" loading="lazy" decoding="async" alt="青寻IP八种表情与姿态设计" data-caption="表情包｜以身体倾斜、四肢动作和瓶口窑火变化传递情绪，保留非人形器物特征。" aria-hidden="true" />
+                  <img class="creative-visual" data-creative-visual="2" src="./images/creative/qingxun-actions.jpg" width="894" height="1200" loading="lazy" decoding="async" alt="青寻IP走访、观察、记录、采访、拍摄与传播动作" data-caption="动作衍生｜将走访、观察、记录、采访、拍摄与公共传播转译为六组角色动作。" aria-hidden="true" />
+                  <img class="creative-visual" data-creative-visual="3" src="./images/creative/qingxun-process.jpg" width="894" height="1200" loading="lazy" decoding="async" alt="从瓷土处理到青寻形象完成的艺术化制作过程" data-caption="制作过程｜以瓷土处理、拉坯、修坯、施釉与烧成为线索，呈现青寻诞生的艺术化过程。" aria-hidden="true" />
+                  <img class="creative-visual" data-creative-visual="4" src="./images/creative/qingxun-poster.jpg" width="896" height="1200" loading="lazy" decoding="async" alt="一器千年青色新生青寻主题海报" data-caption="海报衍生｜折页记录连接山水、龙窑与海上远播，让一件器物成为理解历史与当下的入口。" aria-hidden="true" />
+                  <img class="creative-visual" data-creative-visual="5" src="./images/creative/qingxun-merchandise.jpg" width="894" height="1200" loading="lazy" decoding="async" alt="青寻IP摆件、徽章、钥匙扣、笔记本、帆布袋等产品周边概念" data-caption="产品周边｜围绕角色轮廓、山地等高线、窑火与田野证牌建立可延展的文创概念系列。" aria-hidden="true" />
+                </span>
+                <span class="creative-stage__expand" aria-hidden="true"><i data-lucide="maximize-2"></i></span>
+              </button>
+              <figcaption class="creative-stage__caption">
+                <p><span data-creative-current>01</span><span aria-hidden="true">／</span><span>06</span></p>
+                <strong data-creative-active-title>IP 三视图</strong>
+                <span>AI 辅助概念视觉 · 非实物生产记录</span>
+              </figcaption>
+              <div class="creative-controls" aria-label="文创图像切换">
+                <button type="button" data-creative-previous aria-label="查看上一张文创图像" disabled><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+                <button type="button" data-creative-next aria-label="查看下一张文创图像"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+              </div>
+            </figure>
+          </div>
+
+          <ol class="creative-steps" aria-label="青寻文创设计模块" data-creative-steps>
+            <li class="creative-step is-active" data-creative-step="0">
+              <button type="button" data-creative-trigger="0" aria-controls="creative-stage" aria-current="true">
+                <span class="creative-step__index">01</span>
+                <span class="creative-step__title">IP 三视图</span>
+                <span class="creative-step__copy">从圆肩丰腹瓶建立正、侧、背面的统一角色比例，并锁定窑火、证牌与记录册三项核心识别。</span>
+              </button>
+            </li>
+            <li class="creative-step" data-creative-step="1">
+              <button type="button" data-creative-trigger="1" aria-controls="creative-stage">
+                <span class="creative-step__index">02</span>
+                <span class="creative-step__title">表情包</span>
+                <span class="creative-step__copy">让情绪来自器物的倾斜、墨点五官与窑火变化，保持轻松但不变成人类卡通角色。</span>
+              </button>
+            </li>
+            <li class="creative-step" data-creative-step="2">
+              <button type="button" data-creative-trigger="2" aria-controls="creative-stage">
+                <span class="creative-step__index">03</span>
+                <span class="creative-step__title">动作衍生</span>
+                <span class="creative-step__copy">用走访、观察、记录、采访、拍摄与传播六个动作，回应社会实践的真实工作方法。</span>
+              </button>
+            </li>
+            <li class="creative-step" data-creative-step="3">
+              <button type="button" data-creative-trigger="3" aria-controls="creative-stage">
+                <span class="creative-step__index">04</span>
+                <span class="creative-step__title">制作过程</span>
+                <span class="creative-step__copy">以备料、成形、修坯、施釉和烧成串联角色诞生，建立形象与传统技艺之间的逻辑联系。</span>
+              </button>
+            </li>
+            <li class="creative-step" data-creative-step="4">
+              <button type="button" data-creative-trigger="4" aria-controls="creative-stage">
+                <span class="creative-step__index">05</span>
+                <span class="creative-step__title">海报衍生</span>
+                <span class="creative-step__copy">把田野折页延伸为山水、龙窑与远播航线，用一条连续路径表达“一器千年”。</span>
+              </button>
+            </li>
+            <li class="creative-step" data-creative-step="5">
+              <button type="button" data-creative-trigger="5" aria-controls="creative-stage">
+                <span class="creative-step__index">06</span>
+                <span class="creative-step__title">产品周边</span>
+                <span class="creative-step__copy">从角色、等高线、窑火和证牌提取可复用图形，形成摆件、文具与随身物件的概念系列。</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+        <p class="creative-note">AI 辅助艺术化视觉 · 文创概念展示 · 非实物生产记录</p>
+      </section>
+
+      <section class="about" id="about" data-section="about">
+        <div class="chapter-portal chapter-portal--about" data-chapter-portal data-portal-variant="about">
+          <div class="chapter-portal__sticky">
+            <figure class="chapter-portal__frame">
+              <img src="./images/chapters/about.jpg" width="1535" height="1024" loading="lazy" decoding="async" alt="艺术化呈现的青瓷器、资料纸张、手套与窑火" />
+              <span class="chapter-portal__veil" aria-hidden="true"></span>
+              <figcaption class="chapter-portal__art-note">艺术化视觉 · 非史料图像</figcaption>
+            </figure>
+            <div class="chapter-portal__copy-shell">
+              <header class="section-heading chapter-portal__copy">
+                <div class="chapter-portal__title">
+                  <p class="section-en">CREDITS &amp; SOURCES</p>
+                  <h2>团队与来源</h2>
+                </div>
+                <p class="chapter-portal__summary">以团队、致谢与来源完成这次寻访，也为每一项公开内容留下可核实的出处。</p>
+              </header>
+            </div>
+          </div>
+        </div>
+        <div class="footer-vessel" aria-hidden="true">
+          <svg viewBox="0 0 420 720"><use href="#round-shoulder-vase-shape"></use></svg>
+        </div>
+        <div class="about-content">
+          <div class="footer-wordmark"><span>浙里的青瓷真好看</span><span class="seal">瓷</span></div>
+          <dl class="credits-list">
+            <div><dt>学校 / 学院</dt><dd>山东大学新闻传播学院</dd></div>
+            <div><dt>指导老师</dt><dd>秦川、藏丽娜</dd></div>
+            <div><dt>团队名称</dt><dd>“浙里的青瓷真好看”社会实践团队</dd></div>
+            <div><dt>内容审核</dt><dd>全体成员</dd></div>
+          </dl>
+          <div class="source-list" id="sources" data-source-list>
+            <h3>资料来源</h3>
+            <p>正式发布前，将在此列出五段历史、图片授权和地图资料的完整来源。</p>
+          </div>
+          <p class="site-update" data-site-update></p>
+          <p class="preview-note" data-preview-note>内容预览 · 非正式发布</p>
+          <a class="back-to-top" href="#form"><i data-lucide="arrow-up" aria-hidden="true"></i><span>回到初见</span></a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="fieldwork-lightbox" data-fieldwork-lightbox aria-labelledby="fieldwork-lightbox-caption">
+      <div class="fieldwork-lightbox__toolbar">
+        <p><span data-fieldwork-current>01</span><span aria-hidden="true"> / </span><span data-fieldwork-total>07</span></p>
+        <button class="icon-button" type="button" data-fieldwork-close aria-label="关闭大图"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <figure>
+        <img data-fieldwork-lightbox-image src="./images/fieldwork/team-outdoor-1600.jpg" alt="部分团队成员与受访者在龙泉走访现场合影" />
+        <figcaption id="fieldwork-lightbox-caption" data-fieldwork-lightbox-caption></figcaption>
+      </figure>
+      <div class="fieldwork-lightbox__navigation">
+        <button class="icon-button" type="button" data-fieldwork-previous aria-label="查看上一张照片"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+        <button class="icon-button" type="button" data-fieldwork-next aria-label="查看下一张照片"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </dialog>
+
+    <dialog class="creative-lightbox" data-creative-lightbox aria-labelledby="creative-lightbox-title">
+      <div class="creative-lightbox__toolbar">
+        <p id="creative-lightbox-title"><span data-creative-lightbox-current>01</span><span aria-hidden="true">／</span><span>06</span></p>
+        <button class="icon-button" type="button" data-creative-close aria-label="关闭文创大图"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <figure>
+        <img data-creative-lightbox-image src="./images/creative/qingxun-turnaround.jpg" alt="青寻IP正面、侧面、背面三视图及局部设计细节" />
+        <p class="creative-lightbox__note">AI 辅助概念视觉 · 非实物生产记录</p>
+        <figcaption data-creative-lightbox-caption>IP 三视图｜以圆肩丰腹青瓷瓶为角色母体，窑火、田野证牌和折页记录册共同构成识别系统。</figcaption>
+      </figure>
+      <div class="creative-lightbox__navigation">
+        <button class="icon-button" type="button" data-creative-lightbox-previous aria-label="查看上一张文创图像"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+        <button class="icon-button" type="button" data-creative-lightbox-next aria-label="查看下一张文创图像"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </dialog>
+
+    <div class="offline-notice" id="offline-notice" role="status" aria-live="polite" data-offline-notice hidden>当前为离线状态，外部成果需联网后查看。</div>
+
+    <svg class="svg-defs" aria-hidden="true">
+      <defs>
+        <symbol id="round-shoulder-vase-shape" viewBox="0 0 420 720">
+          <path d="M110 58 C146 44 274 44 310 58 L306 88 C266 101 154 101 114 88 Z M140 88 C143 130 151 162 119 191 C74 230 55 293 58 393 C61 511 106 600 162 628 C190 644 230 644 258 628 C314 600 359 511 362 393 C365 293 346 230 301 191 C269 162 277 130 280 88 Z" />
+          <path d="M114 72 C154 58 266 58 306 72 C266 88 154 88 114 72 Z" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <noscript><p class="noscript">请启用 JavaScript 以体验器物汇聚与碎片动画。历史与成果内容仍可在页面中阅读。</p></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

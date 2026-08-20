@@ -1,0 +1,11 @@
+Use case: photorealistic-natural
+Asset type: 4:3 website cover for a Longquan celadon oral-history archive
+Primary request: a quiet Longquan celadon workshop after a conversation, expressing craft inheritance and contemporary practice without depicting either interviewee
+Scene/backdrop: a real, modest ceramic studio beside a kiln room; a worn wooden workbench with two empty work stools, one unglazed clay vessel, one finished powder-celadon tea cup, a wooden trimming tool, calipers, and a folded work apron
+Style/medium: natural editorial still-life photography with restrained cultural-magazine polish, realistic materials and imperfect workshop texture
+Composition/framing: horizontal 4:3, eye-level medium-wide view; key objects gathered near the center and lower middle; keep the upper-right and lower-left corners visually quiet for website metadata overlays; show a hint of the next workspace in depth
+Lighting/mood: soft overcast daylight from a side window with a very restrained warm kiln glow in the distance; contemplative, sincere, not staged
+Color palette: porcelain white, powder celadon, mineral blue-green, charcoal wood, a very small amount of warm kiln amber
+Materials/textures: porous unfired clay, translucent celadon glaze, worn wood grain, cotton work cloth, subtle dust from real use
+Constraints: no people, no faces, no hands, no text, no Chinese characters, no logos, no watermark, no fake signatures; do not imitate a historical photograph; keep the scene bright enough for web reading
+Avoid: dark cinematic blue lighting, luxury showroom styling, antique-scroll decoration, blue-and-white porcelain, dramatic smoke, excessive blur, decorative gradients

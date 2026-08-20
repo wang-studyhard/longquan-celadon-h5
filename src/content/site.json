@@ -350,7 +350,23 @@
       "approvedAt": "2026.08.20",
       "imageryRights": "team-owned"
     },
-    { "id": "oral-history-01", "category": "oralHistory", "fixedOrder": 1, "index": "01", "aspectRatio": "4:3", "status": "pending" }
+    {
+      "id": "oral-history-01",
+      "category": "oralHistory",
+      "fixedOrder": 1,
+      "index": "01",
+      "aspectRatio": "4:3",
+      "status": "published",
+      "title": "窑火之间的人：陈华、陈坛根口述史",
+      "summary": "两位龙泉青瓷从业者讲述家族传承、创作实践与企业转型。",
+      "date": "2026.08.20",
+      "platform": "团队口述史",
+      "cover": "./assets/glaze-texture.svg",
+      "href": "./oral-history/",
+      "approvedBy": "项目团队",
+      "approvedAt": "2026.08.20",
+      "imageryRights": "team-owned"
+    }
   ],
   "sources": [
     {

@@ -1,0 +1,10 @@
+Use case: photorealistic-natural
+Asset type: optional editorial image between oral-history sections
+Primary request: close-up of an anonymous Longquan celadon craftsperson checking the curve of an unfired vessel with a simple wooden rib and calipers
+Scene/backdrop: active ceramic workbench with only necessary tools and traces of clay
+Style/medium: candid documentary-style photography, natural skin and material texture, restrained publication finish
+Composition/framing: horizontal 3:2 close-up; hands and vessel fully visible; face and identity outside the frame; leave calm breathing room around the working gesture
+Lighting/mood: soft window light, focused and patient
+Color palette: pale clay, powder celadon samples, mineral blue-green work cloth, warm neutral wood
+Constraints: anonymous hands only; technically plausible ceramic handling; no text, logos, watermark, jewelry, manicure styling, or staged luxury props
+Avoid: identifiable face, extra fingers, glossy advertising look, heavy color grading, blue-and-white porcelain

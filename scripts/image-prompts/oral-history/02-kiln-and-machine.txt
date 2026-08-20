@@ -1,0 +1,10 @@
+Use case: photorealistic-natural
+Asset type: optional editorial image between oral-history sections
+Primary request: one contemporary Longquan celadon production space where traditional kiln tools and a modern ceramic-finishing robotic arm coexist naturally, showing continuity rather than conflict
+Scene/backdrop: practical workshop; kiln tools and saggers in the foreground, a compact industrial robotic arm working on a clay vessel farther back
+Style/medium: grounded editorial documentary photography, realistic industrial and ceramic details
+Composition/framing: horizontal 3:2 wide view with a clear depth path from hand tools to modern equipment; no split-screen collage
+Lighting/mood: balanced daylight and restrained workshop light, calm and matter-of-fact
+Color palette: porcelain white, celadon green, dark kiln brick, brushed metal, neutral concrete
+Constraints: no people or identifiable workers, no text, logos, watermark, futuristic laboratory, or fictional machinery; machinery must look plausible and secondary to the ceramic work
+Avoid: sparks, dramatic smoke, neon lighting, sci-fi styling, luxury showroom, blue-and-white porcelain

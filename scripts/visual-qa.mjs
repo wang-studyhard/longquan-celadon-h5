@@ -70,6 +70,14 @@ for (const viewport of viewports) {
     clippedControls: Array.from(document.querySelectorAll("button, .seal, .route-actions span"))
       .filter((element) => element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > element.clientHeight + 1)
       .map((element) => element.textContent?.trim() ?? element.className),
+    sectionOrder: Array.from(document.querySelectorAll("[data-section]")).map((section) => section.id),
+    desktopNavOrder: Array.from(document.querySelectorAll(".desktop-nav a")).map((link) => link.getAttribute("href")?.slice(1)),
+    mobileNavOrder: Array.from(document.querySelectorAll(".mobile-nav a")).map((link) => link.getAttribute("href")?.slice(1)),
+    narrativeLinks: {
+      heroNext: document.querySelector(".next-chapter")?.getAttribute("href"),
+      aboutNext: document.querySelector(".chapter-continue")?.getAttribute("href"),
+      creativeClose: document.querySelector(".creative-closure .back-to-top")?.getAttribute("href"),
+    },
   }));
   if (!initial.title.includes("龙泉青瓷")) failures.push(`${viewport.name}: 页面标题错误`);
   if (initial.historyCount !== 5) failures.push(`${viewport.name}: 历史节点为 ${initial.historyCount}`);
@@ -88,6 +96,14 @@ for (const viewport of viewports) {
   if (initial.historyLottieCount !== 0) failures.push(`${viewport.name}: 已移除的历史 Lottie 仍然存在`);
   if (initial.growthPathCount !== 5) failures.push(`${viewport.name}: 藤脉生长路径为 ${initial.growthPathCount}`);
   if (initial.shardCount !== 9) failures.push(`${viewport.name}: 同源碎片为 ${initial.shardCount}`);
+  const expectedOrder = ["form", "about", "longquan", "results", "history", "creative"];
+  if (initial.sectionOrder.join() !== expectedOrder.join()) failures.push(`${viewport.name}: 章节 DOM 顺序错误 ${initial.sectionOrder.join(" → ")}`);
+  if (initial.desktopNavOrder.join() !== expectedOrder.join() || initial.mobileNavOrder.join() !== expectedOrder.join()) {
+    failures.push(`${viewport.name}: 导航顺序与章节顺序不一致`);
+  }
+  if (initial.narrativeLinks.heroNext !== "#about" || initial.narrativeLinks.aboutNext !== "#longquan" || initial.narrativeLinks.creativeClose !== "#form") {
+    failures.push(`${viewport.name}: 章节入口或收束链接错误 ${JSON.stringify(initial.narrativeLinks)}`);
+  }
   if (initial.wordmarkText !== "瓷") failures.push(`${viewport.name}: 页眉团队文字未删除`);
   if (initial.heroLayering.world >= initial.heroLayering.main) failures.push(`${viewport.name}: 器物场景仍可能遮挡标题`);
   if (initial.horizontalOverflow > 1) failures.push(`${viewport.name}: 横向溢出 ${initial.horizontalOverflow}px；${JSON.stringify(initial.overflowElements)}`);
@@ -157,7 +173,7 @@ for (const viewport of viewports) {
   if (fractureState.visible < 7 || fractureState.moved < 7 || fractureState.vesselOpacity > 0.2) failures.push(`${viewport.name}: 青瓷碎片未在章节交界铺开 ${JSON.stringify(fractureState)}`);
   await page.screenshot({ path: resolve(output, `${viewport.name}-hero-fracture.png`) });
 
-  for (const portalName of ["history", "longquan", "results", "about"]) {
+  for (const portalName of ["about", "longquan", "results", "history"]) {
     const selector = `.chapter-portal--${portalName}`;
     await page.evaluate(({ selector }) => {
       const portal = document.querySelector(selector);
@@ -240,7 +256,7 @@ for (const viewport of viewports) {
   if (activeMotionEnd.transform === activeMotionStart.transform) failures.push(`${viewport.name}: 匠人局部动作没有持续变化`);
   await page.screenshot({ path: resolve(output, `${viewport.name}-history-forward.png`) });
   await page.screenshot({ path: resolve(output, `${viewport.name}-history.png`) });
-  await page.locator("#longquan").scrollIntoViewIfNeeded();
+  await page.locator("#creative").scrollIntoViewIfNeeded();
   await page.waitForTimeout(300);
   const pausedMotionStart = await historyScene.evaluate((chapter) => {
     const scene = chapter.querySelector(".history-scene");
@@ -250,6 +266,8 @@ for (const viewport of viewports) {
   await page.waitForTimeout(400);
   const pausedMotionEnd = await historyScene.locator(".history-scene-motion").evaluate((element) => ({ transform: getComputedStyle(element).transform }));
   if (pausedMotionStart.state !== "paused" || pausedMotionStart.playState !== "paused" || pausedMotionEnd.transform !== pausedMotionStart.transform) failures.push(`${viewport.name}: 离屏匠人动作仍在运行 ${JSON.stringify({ pausedMotionStart, pausedMotionEnd })}`);
+  await page.locator("#longquan").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
   const visibleStops = await page.locator(".route-stop").evaluateAll((stops) => stops.filter((stop) => Number(getComputedStyle(stop).opacity) > 0.2).length);
   if (visibleStops !== 4) failures.push(`${viewport.name}: 路线站点仅显示 ${visibleStops}/4`);
   await page.screenshot({ path: resolve(output, `${viewport.name}-route.png`) });
@@ -331,7 +349,15 @@ for (const viewport of viewports) {
     focusRestored: document.activeElement === document.querySelector("[data-creative-expand]"),
   }));
   if (dialogClosedState.open || !dialogClosedState.focusRestored) failures.push(`${viewport.name}: 文创大图关闭后焦点未恢复`);
+  await page.locator(".creative-closure").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(300);
   await page.screenshot({ path: resolve(output, `${viewport.name}-creative.png`) });
+
+  const finalClosure = await page.locator(".creative-closure").evaluate((closure) => ({
+    visible: Number(getComputedStyle(closure).opacity) > 0.5,
+    href: closure.querySelector(".back-to-top")?.getAttribute("href"),
+  }));
+  if (!finalClosure.visible || finalClosure.href !== "#form") failures.push(`${viewport.name}: 文创结尾未形成回到开场的收束`);
 
   await page.locator(".about-content").scrollIntoViewIfNeeded();
   await page.waitForTimeout(400);

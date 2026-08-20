@@ -87,7 +87,7 @@
       "coordinateSource": "360地图公开地点检索",
       "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E9%9D%92%E7%93%B7%E5%8D%9A%E7%89%A9%E9%A6%86",
       "approximatePosition": { "x": 92, "y": 26 },
-      "displayPosition": { "x": 78, "y": 39 },
+      "displayPosition": { "x": 79, "y": 48 },
       "verifiedByTeam": true
     },
     {
@@ -104,7 +104,7 @@
       "coordinateSource": "360地图公开地点检索",
       "mapHref": "https://map.360.cn/?k=%E6%9C%9B%E7%93%AF%C2%B7%E9%99%B6%E6%BA%AA%E5%B7%9D&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
       "approximatePosition": { "x": 86, "y": 18 },
-      "displayPosition": { "x": 59, "y": 26 },
+      "displayPosition": { "x": 50, "y": 19 },
       "verifiedByTeam": true
     },
     {
@@ -121,7 +121,7 @@
       "coordinateSource": "360地图公开企业地点检索",
       "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E5%B8%82%E5%8F%A4%E7%AA%91%E7%93%B7%E5%8E%82&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
       "approximatePosition": { "x": 8, "y": 87 },
-      "displayPosition": { "x": 19, "y": 74 },
+      "displayPosition": { "x": 21, "y": 50 },
       "verifiedByTeam": true
     },
     {
@@ -138,7 +138,7 @@
       "coordinateSource": "360地图公开地点检索",
       "mapHref": "https://map.360.cn/?k=%E9%BE%99%E6%B3%89%E5%B8%82%E8%A5%BF%E8%A1%97%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E8%A1%97%E5%8C%BA&c=%E4%B8%BD%E6%B0%B4%E5%B8%82",
       "approximatePosition": { "x": 88, "y": 11 },
-      "displayPosition": { "x": 78, "y": 15 },
+      "displayPosition": { "x": 57, "y": 79 },
       "verifiedByTeam": true
     }
   ],

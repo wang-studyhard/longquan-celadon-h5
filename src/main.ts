@@ -296,8 +296,8 @@ function initializeMotion(entersAfterHero: boolean): void {
     });
   });
 
-  const contourPaths = gsap.utils.toArray<SVGPathElement>(".map-contours path, .route-path");
-  contourPaths.forEach((path) => {
+  const routeDrawPaths = gsap.utils.toArray<SVGPathElement>(".route-path");
+  routeDrawPaths.forEach((path) => {
     const length = path.getTotalLength();
     gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
   });
@@ -306,10 +306,8 @@ function initializeMotion(entersAfterHero: boolean): void {
   gsap.timeline({
     scrollTrigger: { trigger: ".longquan", start: "top 78%", end: "top 12%", scrub: 0.68 },
   })
-    .to(".map-vessel-outline", { scale: 1.7, opacity: 0, transformOrigin: "center", duration: 0.36, ease: "none" })
-    .to(".map-contours path", { strokeDashoffset: 0, duration: 0.36, stagger: 0.025, ease: "none" }, 0.08)
-    .to(".route-path", { strokeDashoffset: 0, duration: 0.34, stagger: 0.08, ease: "none" }, 0.36)
-    .to(".route-stop", { autoAlpha: 1, scale: 1, duration: 0.24, stagger: 0.08, ease: "power2.out" }, 0.54);
+    .to(".route-path", { strokeDashoffset: 0, duration: 0.52, stagger: 0.08, ease: "none" }, 0.12)
+    .to(".route-stop", { autoAlpha: 1, scale: 1, duration: 0.24, stagger: 0.08, ease: "power2.out" }, 0.34);
 
   const documentaryCover = document.querySelector<HTMLElement>(".is-documentary .result-cover");
   if (documentaryCover) {
@@ -545,33 +543,33 @@ function renderRouteStops(): void {
   const root = document.querySelector<HTMLElement>("[data-route-stops]")!;
   const actions = document.querySelector<HTMLElement>("[data-route-actions]")!;
   const pathRoot = document.querySelector<SVGGElement>("[data-route-paths]")!;
-  const anchorRoot = document.querySelector<SVGGElement>("[data-route-anchors]")!;
-  const point = (position: { x: number; y: number }) => ({ x: position.x * 10, y: position.y * 6.2 });
-  const routePoints = content.routeStops.map((stop) => point(stop.approximatePosition));
-  const controls = [{ x: 930, y: 108 }, { x: 390, y: 168 }, { x: 500, y: 612 }];
+  const point = (position: { x: number; y: number }) => ({ x: position.x * 10, y: position.y * 10 });
+  const routePoints = content.routeStops.map((stop) => point(stop.displayPosition));
+  const controls = [
+    { c1: { x: 750, y: 360 }, c2: { x: 620, y: 220 } },
+    { c1: { x: 370, y: 220 }, c2: { x: 240, y: 360 } },
+    { c1: { x: 260, y: 650 }, c2: { x: 430, y: 780 } },
+  ];
 
   routePoints.slice(0, -1).forEach((start, index) => {
     const end = routePoints[index + 1];
     const control = controls[index];
-    pathRoot.insertAdjacentHTML("beforeend", `<path class="route-path" data-route-segment="${index}" d="M${start.x} ${start.y} Q${control.x} ${control.y} ${end.x} ${end.y}" marker-end="url(#route-arrow)" />`);
+    const path = `M${start.x} ${start.y} C${control.c1.x} ${control.c1.y} ${control.c2.x} ${control.c2.y} ${end.x} ${end.y}`;
+    pathRoot.insertAdjacentHTML("beforeend", `<path class="route-path-base" d="${path}" aria-hidden="true" /><path class="route-path-glaze" d="${path}" aria-hidden="true" /><path class="route-path" data-route-segment="${index}" d="${path}" />`);
   });
 
   content.routeStops.forEach((stop, index) => {
     const icon = routeStopIcon(stop.icon);
-    const anchor = point(stop.approximatePosition);
-    const display = point(stop.displayPosition);
-    anchorRoot.insertAdjacentHTML("beforeend", `
-      <g class="route-anchor${index === 0 ? " is-active" : ""}" data-route-anchor-index="${index}">
-        <line x1="${anchor.x}" y1="${anchor.y}" x2="${display.x}" y2="${display.y}" />
-        <circle class="route-anchor__ring" cx="${anchor.x}" cy="${anchor.y}" r="9" />
-        <circle class="route-anchor__dot" cx="${anchor.x}" cy="${anchor.y}" r="3.5" />
-      </g>`);
     root.insertAdjacentHTML("beforeend", `
       <button class="route-stop${index === 0 ? " is-active" : ""}" type="button" data-route-index="${index}"
+        data-route-id="${stop.id}"
         style="--stop-x:${stop.displayPosition.x};--stop-y:${stop.displayPosition.y}"
         aria-label="查看第 ${stop.order} 站：${stop.name}" tabindex="-1">
-        <span class="route-stop__icon" aria-hidden="true">${icon}</span>
-        <span class="route-stop__number" aria-hidden="true">${String(stop.order).padStart(2, "0")}</span>
+        <span class="route-stop__marker" aria-hidden="true">
+          <span class="route-stop__icon">${icon}</span>
+          <span class="route-stop__number">${String(stop.order).padStart(2, "0")}</span>
+        </span>
+        <span class="route-stop__label" aria-hidden="true">${stop.shortName}</span>
       </button>`);
     actions.insertAdjacentHTML("beforeend", `
       <button class="route-action${index === 0 ? " is-active" : ""}" type="button" data-route-index="${index}"
@@ -597,7 +595,6 @@ function initializeRouteMap(): void {
   const stops = content.routeStops;
   const markers = Array.from(document.querySelectorAll<HTMLButtonElement>(".route-stop"));
   const actions = Array.from(document.querySelectorAll<HTMLButtonElement>(".route-action"));
-  const anchors = Array.from(document.querySelectorAll<SVGGElement>(".route-anchor"));
   const routePaths = Array.from(document.querySelectorAll<SVGPathElement>(".route-path"));
   const image = document.querySelector<HTMLImageElement>("[data-route-image]")!;
   const imageCaption = document.querySelector<HTMLElement>("[data-route-image-caption]")!;
@@ -614,7 +611,6 @@ function initializeRouteMap(): void {
     activeIndex = (index + stops.length) % stops.length;
     const stop = stops[activeIndex];
     markers.forEach((marker, markerIndex) => marker.classList.toggle("is-active", markerIndex === activeIndex));
-    anchors.forEach((anchor, anchorIndex) => anchor.classList.toggle("is-active", anchorIndex === activeIndex));
     routePaths.forEach((segment, segmentIndex) => segment.classList.toggle("is-complete", segmentIndex < activeIndex));
     actions.forEach((action, actionIndex) => {
       const active = actionIndex === activeIndex;
@@ -1322,7 +1318,7 @@ function renderSources(): void {
     item.id = `source-${source.id}`;
     const backLinks = content.history
       .filter((node) => (node.sourceIds as string[]).includes(source.id))
-      .map((node) => `<a class="source-back" href="#history-${node.id}">返回${node.stage}</a>`)
+      .map((node) => `<a class="source-context" href="#history-${node.id}">查看${node.stage}</a>`)
       .join(" · ");
     item.innerHTML = `<a href="${source.href}" target="_blank" rel="noopener noreferrer" data-external-link>[${source.id}] ${source.title}</a><span>${source.publisher} · ${source.license} · 访问于 ${source.accessedAt}</span>${backLinks ? `<span>${backLinks}</span>` : ""}`;
     list.append(item);

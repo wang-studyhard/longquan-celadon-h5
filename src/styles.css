@@ -742,6 +742,8 @@ main { position: relative; z-index: 2; }
 
 /* Oral history */
 .oral-page { color: var(--ink); background: var(--porcelain); }
+.oral-progress { position: fixed; z-index: 90; inset: 0 0 auto; height: 2px; background: rgba(36,79,91,.12); pointer-events: none; }
+.oral-progress span { display: block; width: 100%; height: 100%; background: var(--cinnabar); transform: scaleX(0); transform-origin: left center; }
 .oral-shell { position: relative; width: var(--content); min-height: 100svh; margin: 0 auto; padding: 28px 0 96px; overflow: clip; }
 .oral-shell::before {
   content: "述"; position: absolute; z-index: -1; top: 5%; right: -4%; color: var(--celadon-deep);
@@ -761,12 +763,13 @@ main { position: relative; z-index: 2; }
 .oral-status { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--celadon-deep); font-size: 12px; }
 .oral-hero__visual {
   position: relative; width: 100%; aspect-ratio: 4/3; margin: 0; overflow: hidden;
-  background: var(--paper-blue) url("./assets/glaze-texture.svg") center / cover; border-top: 1px solid var(--celadon-deep);
+  background: var(--paper-blue); border-top: 1px solid var(--celadon-deep);
 }
-.oral-hero__visual svg { display: block; width: 100%; height: 100%; }
-.oral-hero__visual use { fill: rgba(169,193,177,.28); stroke: var(--celadon-deep); stroke-width: 2; }
-.oral-visual__line { fill: none; stroke: var(--cinnabar); stroke-width: 1.5; opacity: .7; }
-.oral-hero__visual figcaption { position: absolute; right: 18px; bottom: 16px; color: var(--celadon-deep); font-size: 11px; }
+.oral-hero__visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; will-change: transform, clip-path; }
+.oral-hero__visual figcaption {
+  position: absolute; z-index: 2; right: 18px; bottom: 16px; padding: 5px 8px; color: var(--ink);
+  background: rgba(242,240,232,.88); border-top: 1px solid var(--celadon-deep); font-size: 10px; line-height: 1.4;
+}
 .oral-index { display: grid; margin: 24px 0 120px; border-top: 1px solid var(--celadon-deep); }
 .oral-index a { display: grid; grid-template-columns: minmax(74px,.42fr) 1fr; align-items: baseline; gap: 18px; min-height: 72px; padding: 20px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .oral-index strong { color: var(--celadon-deep); font: 600 22px/1.35 var(--serif); }
@@ -791,13 +794,20 @@ main { position: relative; z-index: 2; }
 .oral-answer { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 14px; margin-top: 28px; }
 .oral-answer > span { grid-column: 1; grid-row: 1 / -1; padding-top: 5px; color: var(--cinnabar); font-size: 12px; }
 .oral-answer > p { grid-column: 2; }
-.oral-answer p, .oral-theme p, .oral-source-note p { margin: 0; color: var(--ink); font-size: 16px; line-height: 2; }
+.oral-answer p, .oral-theme p { margin: 0; color: var(--ink); font-size: 16px; line-height: 2; }
 .oral-answer p + p { margin-top: 18px; }
+.oral-media { margin: 104px 0 112px; }
+.oral-media__frame { aspect-ratio: 3/2; overflow: hidden; background: var(--porcelain-deep); will-change: clip-path; }
+.oral-media img { display: block; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.oral-media figcaption {
+  display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 3px 16px; padding: 13px 0 0;
+  color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; line-height: 1.65;
+}
+.oral-media figcaption > span { grid-row: 1 / span 2; color: var(--celadon-deep); font: 600 14px/1.55 var(--serif); }
+.oral-media figcaption p, .oral-media figcaption small { margin: 0; }
+.oral-media figcaption small { color: var(--celadon-deep); font-size: 10px; }
 .oral-theme { margin-top: 80px; }
 .oral-theme h3 { margin: 0 0 22px; color: var(--celadon-deep); font: 600 27px/1.45 var(--serif); letter-spacing: 0; }
-.oral-source-note { margin-top: 88px; padding: 22px 0 0; border-top: 1px solid var(--line); }
-.oral-source-note strong { display: block; margin-bottom: 10px; color: var(--cinnabar); font: 600 14px/1.4 var(--serif); }
-.oral-source-note p { color: var(--muted); font-size: 14px; line-height: 1.9; }
 .oral-top { display: inline-block; margin-top: 120px; padding-bottom: 4px; border-bottom: 1px solid currentColor; color: var(--celadon-deep); font-size: 13px; text-decoration: none; }
 
 @media (hover:hover) {

@@ -559,6 +559,8 @@ main { position: relative; z-index: 2; }
 .result-card.is-oral .result-cover { color: var(--porcelain); background-color: #244f5b; background-blend-mode: multiply; }
 .result-card.is-documentary .result-cover, .result-card.is-interview .result-cover { aspect-ratio: 16/9; }
 .result-card.is-documentary .result-cover { width: 100%; }
+.result-cover--video { background: #0d1716; }
+.result-cover--video video { display: block; width: 100%; height: 100%; aspect-ratio: 16/9; object-fit: contain; background: #0d1716; }
 .result-preview-meta { position: absolute; inset: 20px; display: block; color: inherit; }
 .result-preview-meta::after { content: "龙泉青瓷 · 田野成果"; position: absolute; right: 0; bottom: 0; writing-mode: vertical-rl; font-size: 9px; opacity: .68; }
 .result-preview-meta span:first-child { position: absolute; top: 0; right: 0; writing-mode: vertical-rl; font: 500 13px/1.4 var(--serif); }

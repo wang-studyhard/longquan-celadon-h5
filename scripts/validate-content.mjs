@@ -103,7 +103,8 @@ if (!Array.isArray(content.results)) {
     if (!Number.isInteger(item.fixedOrder)) errors.push(`${label}.fixedOrder 必须是整数`);
     if (!["pending", "published"].includes(item.status)) errors.push(`${label}.status 必须是 pending 或 published`);
     if (item.status === "published") {
-      ["title", "summary", "date", "platform", "cover", "href", "approvedBy", "approvedAt", "imageryRights"].forEach((field) => addMissing(`${label}.${field}`, item[field]));
+      ["title", "summary", "date", "platform", "cover", "approvedBy", "approvedAt", "imageryRights"].forEach((field) => addMissing(`${label}.${field}`, item[field]));
+      addMissing(`${label}.${item.mediaType === "video" ? "src" : "href"}`, item.mediaType === "video" ? item.src : item.href);
       if (item.imageryRights && !["team-owned", "licensed"].includes(item.imageryRights)) errors.push(`${label}.imageryRights 必须是 team-owned 或 licensed`);
     }
   });

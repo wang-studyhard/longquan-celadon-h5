@@ -42,15 +42,26 @@ try {
   if (validProduction.status !== 0) throw new Error(`完整正式内容应通过：\n${validProduction.stderr}`);
 
   const invalid = structuredClone(valid);
-  invalid.results[0].status = "published";
+  const pendingIndex = invalid.results.findIndex((item) => item.status === "pending");
+  invalid.results[pendingIndex].status = "published";
   await writeFile(fixturePath, JSON.stringify(invalid), "utf8");
   const invalidProduction = run("production", fixturePath);
   const invalidOutput = `${invalidProduction.stdout}\n${invalidProduction.stderr}`;
-  if (invalidProduction.status === 0 || !invalidOutput.includes("results[0].title 缺失") || !invalidOutput.includes("imageryRights")) {
+  if (invalidProduction.status === 0 || !invalidOutput.includes(`results[${pendingIndex}].title 缺失`) || !invalidOutput.includes("imageryRights")) {
     throw new Error(`已发布成果缺字段时未被准确拦截：\n${invalidOutput}`);
   }
 
-  console.log("内容校验测试通过：预览、完整正式内容、缺字段已发布成果三种状态均符合预期");
+  const videoWithoutSource = structuredClone(valid);
+  const videoIndex = videoWithoutSource.results.findIndex((item) => item.mediaType === "video");
+  delete videoWithoutSource.results[videoIndex].src;
+  await writeFile(fixturePath, JSON.stringify(videoWithoutSource), "utf8");
+  const invalidVideo = run("production", fixturePath);
+  const invalidVideoOutput = `${invalidVideo.stdout}\n${invalidVideo.stderr}`;
+  if (invalidVideo.status === 0 || !invalidVideoOutput.includes(`results[${videoIndex}].src 缺失`)) {
+    throw new Error(`已发布视频缺少 src 时未被准确拦截：\n${invalidVideoOutput}`);
+  }
+
+  console.log("内容校验测试通过：预览、完整正式内容、缺字段成果和缺少 src 的视频均符合预期");
 } finally {
   await rm(temp, { recursive: true, force: true });
 }

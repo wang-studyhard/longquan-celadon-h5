@@ -12,6 +12,8 @@ type ResultItem = (typeof content.results)[number] & {
   platform?: string;
   cover?: string;
   href?: string;
+  mediaType?: "video";
+  src?: string;
 };
 
 type SourceItem = {
@@ -689,8 +691,15 @@ function resultCarouselControls(title: string, count: number): string {
 
 function resultCard(item: ResultItem, meta: (typeof categoryMeta)[keyof typeof categoryMeta], position: number, count: number): string {
   const isPublished = item.status === "published";
+  const isVideo = isPublished && item.mediaType === "video" && Boolean(item.src);
   const coverStyle = item.cover ? `style="background-image:url('${item.cover}')"` : "";
-  const visual = `
+  const visual = isVideo ? `
+    <div class="result-cover result-cover--video">
+      <video controls playsinline preload="metadata" poster="${item.cover ?? ""}" width="967" height="544" aria-label="播放${item.title}">
+        <source src="${item.src}" type="video/mp4">
+        您的浏览器暂不支持站内视频播放。
+      </video>
+    </div>` : `
     <div class="result-cover" ${coverStyle}>
       <div class="result-preview-meta"><span>${meta.title}</span><strong>${item.index}</strong><span>${isPublished ? item.platform ?? "发布平台待补充" : "待发布"}</span></div>
       ${(item.category === "documentary" || item.category === "interview") ? `<span class="result-play"><i data-lucide="play"></i></span>` : ""}
@@ -701,9 +710,9 @@ function resultCard(item: ResultItem, meta: (typeof categoryMeta)[keyof typeof c
       <div>
         <h4>${isPublished ? item.title : `${meta.title} ${item.index}`}</h4>
         <p>${isPublished ? `${item.summary} · ${item.date}` : "内容发布后将在原展位开放入口"}</p>
-        ${isPublished ? `<span class="result-action">${meta.action}<i data-lucide="external-link"></i></span>` : ""}
+        ${isPublished && !isVideo ? `<span class="result-action">${meta.action}<i data-lucide="external-link"></i></span>` : ""}
       </div>
-      ${isPublished ? `<i data-lucide="external-link" aria-hidden="true"></i>` : ""}
+      ${isPublished && !isVideo ? `<i data-lucide="external-link" aria-hidden="true"></i>` : ""}
     </div>`;
   const classes = `result-card ${meta.className} ${isPublished ? "is-published" : "is-pending"}`;
   const slideState = `data-result-card data-result-index="${position}" role="group" aria-roledescription="项目" aria-label="第 ${position + 1} 项，共 ${count} 项"${position === 0 ? "" : ' aria-hidden="true" inert'}`;
@@ -712,6 +721,7 @@ function resultCard(item: ResultItem, meta: (typeof categoryMeta)[keyof typeof c
     return `<article class="${classes}" id="${item.id}" ${slideState}><a href="./oral-history/"${tabIndex}>${visual}${caption}</a></article>`;
   }
   if (!isPublished) return `<article class="${classes}" id="${item.id}" ${slideState}>${visual}${caption}</article>`;
+  if (isVideo) return `<article class="${classes}" id="${item.id}" ${slideState}>${visual}${caption}</article>`;
   return `<article class="${classes}" id="${item.id}" ${slideState}><a href="${item.href}" target="_blank" rel="noopener noreferrer" data-external-link${tabIndex}>${visual}${caption}</a></article>`;
 }
 

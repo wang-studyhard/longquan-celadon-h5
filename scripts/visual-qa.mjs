@@ -73,7 +73,7 @@ for (const viewport of viewports) {
   }));
   if (!initial.title.includes("龙泉青瓷")) failures.push(`${viewport.name}: 页面标题错误`);
   if (initial.historyCount !== 5) failures.push(`${viewport.name}: 历史节点为 ${initial.historyCount}`);
-  if (initial.resultCount !== 11) failures.push(`${viewport.name}: 成果展位为 ${initial.resultCount}`);
+  if (initial.resultCount !== 15) failures.push(`${viewport.name}: 成果展位为 ${initial.resultCount}`);
   if (initial.creativeVisualCount !== 6 || initial.creativeTriggerCount !== 6) {
     failures.push(`${viewport.name}: 文创展示结构不完整 ${initial.creativeVisualCount}/6 图、${initial.creativeTriggerCount}/6 项`);
   }

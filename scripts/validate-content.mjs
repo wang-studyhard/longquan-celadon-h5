@@ -14,7 +14,7 @@ const contentPath = resolve(process.env.CONTENT_PATH ?? "src/content/site.json")
 const content = JSON.parse(await readFile(contentPath, "utf8"));
 const errors = [];
 const warnings = [];
-const requiredResultCounts = { documentary: 1, interview: 2, post: 4, news: 3, oralHistory: 1 };
+const requiredResultCounts = { documentary: 1, interview: 2, post: 7, news: 4, oralHistory: 1 };
 
 const missing = (value) => value === null || value === undefined || (typeof value === "string" && value.trim() === "");
 const addMissing = (label, value) => { if (missing(value)) errors.push(`${label} 缺失`); };

@@ -42,12 +42,14 @@ try {
   if (validProduction.status !== 0) throw new Error(`完整正式内容应通过：\n${validProduction.stderr}`);
 
   const invalid = structuredClone(valid);
-  const pendingIndex = invalid.results.findIndex((item) => item.status === "pending");
-  invalid.results[pendingIndex].status = "published";
+  const invalidIndex = invalid.results.findIndex((item) => item.status === "published");
+  ["title", "summary", "date", "platform", "cover", "approvedBy", "approvedAt", "imageryRights", "href"].forEach((field) => {
+    delete invalid.results[invalidIndex][field];
+  });
   await writeFile(fixturePath, JSON.stringify(invalid), "utf8");
   const invalidProduction = run("production", fixturePath);
   const invalidOutput = `${invalidProduction.stdout}\n${invalidProduction.stderr}`;
-  if (invalidProduction.status === 0 || !invalidOutput.includes(`results[${pendingIndex}].title 缺失`) || !invalidOutput.includes("imageryRights")) {
+  if (invalidProduction.status === 0 || !invalidOutput.includes(`results[${invalidIndex}].title 缺失`) || !invalidOutput.includes("imageryRights")) {
     throw new Error(`已发布成果缺字段时未被准确拦截：\n${invalidOutput}`);
   }
 

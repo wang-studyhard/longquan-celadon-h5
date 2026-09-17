@@ -3,7 +3,7 @@
     "title": "一器千年｜龙泉青瓷社会实践成果展",
     "description": "从一器之形，走进千年窑火与今日龙泉。‘浙里的青瓷真好看’暑期社会实践成果展。",
     "team": "浙里的青瓷真好看",
-    "updatedAt": "2026.08.20"
+    "updatedAt": "2026.09.17"
   },
   "history": [
     {
@@ -161,8 +161,44 @@
       "approvedAt": "2026.08.20",
       "imageryRights": "team-owned"
     },
-    { "id": "interview-01", "category": "interview", "fixedOrder": 1, "index": "01", "aspectRatio": "16:9", "status": "pending" },
-    { "id": "interview-02", "category": "interview", "fixedOrder": 2, "index": "02", "aspectRatio": "16:9", "status": "pending" },
+    {
+      "id": "interview-01",
+      "category": "interview",
+      "fixedOrder": 1,
+      "index": "01",
+      "aspectRatio": "16:9",
+      "status": "published",
+      "mediaType": "article",
+      "title": "他在龙泉烧出千年“冰裂”——中国陶瓷艺术大师陈坛根专访",
+      "summary": "走访中国陶瓷艺术大师陈坛根，从家族制瓷经历、龙泉青瓷生产方式的变迁，到冰裂纹烧制技艺的探索与传承，记录一位老一辈青瓷匠人与龙泉窑火相伴数十年的实践经历。",
+      "date": "2026-09-02",
+      "platform": "听瓷鉴宝",
+      "cover": "./images/results/interview-01.webp",
+      "alt": "陈坛根人物专访封面：他在龙泉烧出千年“冰裂”",
+      "href": "https://mp.weixin.qq.com/s/1358mgzeQqm0U50BZHP9cQ",
+      "approvedBy": "项目团队",
+      "approvedAt": "2026.09.17",
+      "imageryRights": "team-owned"
+    },
+    {
+      "id": "interview-02",
+      "category": "interview",
+      "fixedOrder": 2,
+      "index": "02",
+      "aspectRatio": "16:9",
+      "status": "published",
+      "mediaType": "article",
+      "title": "龙泉市非物质文化遗产“龙泉青瓷烧制技艺”代表性传承人——陈华人物专访",
+      "summary": "采访龙泉市非物质文化遗产“龙泉青瓷烧制技艺”代表性传承人陈华，通过人物讲述呈现龙泉青瓷传统烧制技艺的学习、实践与传承，记录当代传承人与青瓷技艺之间的真实联系。",
+      "date": "2026-09-15",
+      "platform": "听瓷鉴宝",
+      "cover": "./images/results/interview-02.webp",
+      "alt": "陈华人物专访封面：龙泉青瓷烧制技艺代表性传承人陈华人物专访",
+      "href": "https://mp.weixin.qq.com/s/E1FfziVKeWd3AZzvT7Ky_w",
+      "approvedBy": "项目团队",
+      "approvedAt": "2026.09.17",
+      "imageryRights": "team-owned"
+    },
     {
       "id": "post-01",
       "category": "post",

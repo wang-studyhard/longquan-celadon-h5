@@ -16,7 +16,7 @@ The primary audience is the general public encountering Longquan celadon through
 
 ## Product Purpose
 
-Present the team's summer fieldwork on Longquan celadon as a three-to-five-minute digital exhibition. Visitors should understand the subject, follow five verified historical stages, see the team's fieldwork route, and find the team's published and forthcoming outcomes.
+Present the team's summer fieldwork on Longquan celadon as a three-to-five-minute digital exhibition. Visitors should understand the subject, follow five verified historical stages, see the team's fieldwork route, and find the team's published outcomes while clearly distinguishing any result still awaiting publication review.
 
 ## Positioning
 
@@ -40,7 +40,7 @@ The site uses one celadon vessel as a continuous visual guide: a two-dimensional
 
 ## Evidence on Hand
 
-The workspace currently contains no approved media or factual copy. The implementation therefore uses clearly labelled preview copy, authored geometric SVG visuals, and fixed result placeholders. Historical claims and third-party images must be replaced or verified before production mode can build.
+The workspace contains verified historical and route copy, approved fieldwork/report/news/documentary/interview/oral-history assets, and fixed result positions. The two interview articles are linked to their original WeChat pages and use locally stored, team-owned covers. Historical claims and third-party images must remain source-linked or explicitly licensed before production release.
 
 ## Product Principles
 

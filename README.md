@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-当前是内容预览版。页面结构、二维器物背景、螺旋历史脉络、调研路线、15 个固定成果展位、口述史二级页、分享封面和离线包均已实现。11 篇已发布报道的封面、团队微型纪录片，以及陈华、陈坛根两篇口述史已接入对应展位；尚未发布的人物采访继续保留明确占位。
+页面结构、二维器物背景、螺旋历史脉络、调研路线、15 个固定成果展位、口述史二级页、分享封面和离线包均已实现。现有报道、团队微型纪录片、陈华与陈坛根两篇人物采访，以及两篇口述史均已接入对应展位。
 
 ## 本地运行
 
@@ -22,6 +22,14 @@ pnpm build
 pnpm qa:visual
 ```
 
+正式内容验收使用：
+
+```powershell
+$env:SITE_URL="https://YOUR_GITHUB_USERNAME.github.io/longquan-celadon-h5/"
+pnpm validate:production
+pnpm build:production
+```
+
 ## 内容更新
 
 内容集中在 `src/content/site.json`。不要改变成果 `id`、`fixedOrder` 和展位数量。
@@ -35,21 +43,20 @@ pnpm qa:visual
 
 历史节点正式发布前必须有 80–120 字正文、授权视觉、来源编号、审核人和审核时间。来源项需记录标题、发布者、链接、许可方式和访问日期。路线站点只能使用团队确认的名称与顺序。
 
-## 在线预览与正式发布
+## 本地预览与正式发布
 
-推送到 `main` 分支后，GitHub Actions 会运行预览构建并自动发布 GitHub Pages。该版本用于在线验收，页面仍保留未进入正式发布状态的内容标记。
+`pnpm build` 是本地预览构建；`pnpm build:production` 会执行正式内容校验，并生成生产环境的 robots 与 sitemap。开发预览模式与网站内容是否已经正式审核是两件事。
 
-内容和授权信息全部审核通过后，再在本地执行正式构建：
+内容和授权信息全部审核通过后，再确认 GitHub Pages 工作流使用正式构建：
 
 先配置固定 Pages 地址，再运行：
 
 ```powershell
-$env:SITE_URL="https://YOUR_GITHUB_USERNAME.github.io/longquan-celadon-h5/"
 pnpm build:production
 pnpm generate:qr -- $env:SITE_URL
 ```
 
-正式构建会列出所有缺项；全部通过后再将工作流切换为正式构建并创建版本标签发布。
+正式构建会列出所有缺项；全部通过后再推送到 `main`，由工作流发布 GitHub Pages。当前不要通过推送、手动运行工作流或标签发布线上版本。
 
 ## 离线展示
 

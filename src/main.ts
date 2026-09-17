@@ -1,6 +1,6 @@
 import "./styles.css";
 import { gsap } from "gsap";
-import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Menu, Play, X, createIcons } from "lucide";
+import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Menu, X, createIcons } from "lucide";
 import content from "./content/site.json";
 
 let ScrollTrigger: typeof import("gsap/ScrollTrigger").ScrollTrigger;
@@ -11,8 +11,9 @@ type ResultItem = (typeof content.results)[number] & {
   date?: string;
   platform?: string;
   cover?: string;
+  alt?: string;
   href?: string;
-  mediaType?: "video";
+  mediaType?: "article" | "video";
   src?: string;
 };
 
@@ -27,7 +28,7 @@ type SourceItem = {
 
 const categoryMeta = {
   documentary: { title: "微纪录片", action: "观看纪录片", className: "is-documentary" },
-  interview: { title: "人物采访", action: "观看采访", className: "is-interview" },
+  interview: { title: "人物采访", action: "阅读采访", className: "is-interview" },
   post: { title: "介绍推文", action: "查看推文", className: "is-post" },
   news: { title: "新闻稿", action: "阅读原文", className: "is-news" },
   oralHistory: { title: "口述史", action: "进入口述史", className: "is-oral" },
@@ -688,6 +689,7 @@ function resultCarouselControls(title: string, count: number): string {
 function resultCard(item: ResultItem, meta: (typeof categoryMeta)[keyof typeof categoryMeta], position: number, count: number): string {
   const isPublished = item.status === "published";
   const isVideo = isPublished && item.mediaType === "video" && Boolean(item.src);
+  const isInterview = item.category === "interview";
   const coverStyle = item.cover ? `style="background-image:url('${item.cover}')"` : "";
   const visual = isVideo ? `
     <div class="result-cover result-cover--video">
@@ -695,17 +697,19 @@ function resultCard(item: ResultItem, meta: (typeof categoryMeta)[keyof typeof c
         <source src="${item.src}" type="video/mp4">
         您的浏览器暂不支持站内视频播放。
       </video>
+    </div>` : isInterview ? `
+    <div class="result-cover result-cover--art">
+      <img src="${item.cover ?? ""}" alt="${item.alt ?? item.title ?? ""}" width="1600" height="900" loading="lazy" decoding="async">
     </div>` : `
     <div class="result-cover" ${coverStyle}>
       <div class="result-preview-meta"><span>${meta.title}</span><strong>${item.index}</strong><span>${isPublished ? item.platform ?? "发布平台待补充" : "待发布"}</span></div>
-      ${(item.category === "documentary" || item.category === "interview") ? `<span class="result-play"><i data-lucide="play"></i></span>` : ""}
       <span class="result-depth-tint" aria-hidden="true"></span>
     </div>`;
   const caption = `
     <div class="result-caption">
       <div>
         <h4>${isPublished ? item.title : `${meta.title} ${item.index}`}</h4>
-        <p>${isPublished ? `${item.summary} · ${item.date}` : "内容发布后将在原展位开放入口"}</p>
+        <p>${isPublished ? (isInterview ? `${item.platform ?? "发布平台待补充"} · ${item.date ?? "日期待补充"}` : `${item.summary} · ${item.date}`) : "内容发布后将在原展位开放入口"}</p>
         ${isPublished && !isVideo ? `<span class="result-action">${meta.action}<i data-lucide="external-link"></i></span>` : ""}
       </div>
       ${isPublished && !isVideo ? `<i data-lucide="external-link" aria-hidden="true"></i>` : ""}
@@ -1066,7 +1070,7 @@ function renderMeta(): void {
 }
 
 function initializeIcons(): void {
-  createIcons({ icons: { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Menu, Play, X } });
+  createIcons({ icons: { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Menu, X } });
 }
 
 function initializeHeader(): void {
